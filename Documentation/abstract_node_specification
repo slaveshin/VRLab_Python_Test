@@ -1,0 +1,399 @@
+X3DNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+
+X3DChildNode : X3DNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DBindableNode : X3DChildNode {
+  SFBool [in]     set_bind
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+  SFTime [out]    bindTime
+  SFBool [out]    isBound
+}
+X3DInfoNode : X3DChildNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DMetadataObject {
+  SFString [in,out] name      ""  (Required)
+  SFString [in,out] reference ""
+}
+X3DPrototypeInstance : X3DNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DSensorNode  : X3DChildNode {
+  SFBool [in,out] enabled  TRUE
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+  SFBool [out]    isActive
+}
+
+X3DTimeDependentNode : X3DChildNode {
+  SFBool  [in,out] loop         FALSE
+  SFNode  [in,out] metadata     NULL  [X3DMetadataObject]
+  SFTime  [in,out] pauseTime    0     (-∞,∞)
+  SFTime  [in,out] resumeTime   0     (-∞,∞)
+  SFTime  [in,out] startTime    0     (-∞,∞)
+  SFTime  [in,out] stopTime     0     (-∞,∞)
+  SFTime  [out]    elapsedTime
+  SFBool  [out]    isActive
+  SFBool  [out]    isPaused
+}
+
+X3DNetworkSensorNode : X3DSensorNode {
+  SFBool [in,out] enabled  TRUE
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+  SFBool [out]    isActive
+}
+X3DUrlObject {
+  MFString [in,out] url [] [URI]
+}
+X3DBoundedObject {
+  SFVec3f [] bboxCenter 0 0 0    (-∞,∞)
+  SFVec3f [] bboxSize   -1 -1 -1 [0,∞) or −1 −1 −1
+}
+X3DGroupingNode : X3DChildNode, X3DBoundedObject {
+  MFNode  [in]     addChildren             [X3DChildNode]
+  MFNode  [in]     removeChildren          [X3DChildNode]
+  MFNode  [in,out] children       []       [X3DChildNode]
+  SFNode  [in,out] metadata       NULL     [X3DMetadataObject]
+  SFVec3f []       bboxCenter     0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize       -1 -1 -1 [0,∞) or −1 −1 −1
+}
+X3DColorNode : X3DGeometricPropertyNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DComposedGeometryNode : X3DGeometryNode {
+  MFNode [in,out] attrib          []   [X3DVertexAttributeNode]
+  SFNode [in,out] color           NULL [X3DColorNode]
+  SFNode [in,out] coord           NULL [X3DCoordinateNode]
+  SFNode [in,out] fogCoord        NULL [FogCoordinate]
+  SFNode [in,out] metadata        NULL [X3DMetadataObject]
+  SFNode [in,out] normal          NULL [X3DNormalNode]
+  SFNode [in,out] texCoord        NULL [X3DTextureCoordinateNode]
+  SFBool []       ccw             TRUE
+  SFBool []       colorPerVertex  TRUE
+  SFBool []       normalPerVertex TRUE
+  SFBool []       solid           TRUE
+}
+X3DCoordinateNode : X3DGeometricPropertyNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DGeometricPropertyNode : X3DNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DGeometryNode : X3DNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DNormalNode : X3DGeometricPropertyNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DAppearanceChildNode : X3DNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DAppearanceNode : X3DNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DMaterialNode : X3DAppearanceChildNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DShapeNode : X3DChildNode, X3DBoundedObject {
+  SFNode  [in,out] appearance NULL     [X3DAppearanceNode]
+  SFNode  [in,out] geometry   NULL     [X3DGeometryNode]
+  SFNode  [in,out] metadata   NULL     [X3DMetadataObject]
+  SFVec3f []       bboxCenter 0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize   -1 -1 -1 [0,∞) or −1 −1 −1
+}
+X3DFontStyleNode : X3DNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DSoundNode : X3DChildNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DSoundSourceNode : X3DTimeDependentNode {
+  SFString [in,out] description      ""
+  SFBool   [in,out] loop             FALSE
+  SFNode   [in,out] metadata         NULL [X3DMetadataObject]
+  SFTime   [in,out] pauseTime        0    (-∞,∞)
+  SFFloat  [in,out] pitch            1.0  (0,∞)
+  SFTime   [in,out] resumeTime       0    (-∞,∞)
+  SFTime   [in,out] startTime        0    (-∞,∞)
+  SFTime   [in,out] stopTime         0    (-∞,∞)
+  SFTime   [out]    duration_changed
+  SFTime   [out]    elapsedTime
+  SFBool   [out]    isActive
+  SFBool   [out]    isPaused
+}
+X3DLightNode : X3DChildNode {
+  SFFloat [in,out] ambientIntensity 0     [0,1]
+  SFColor [in,out] color            1 1 1 [0,1]
+  SFBool  [in,out] global           FALSE
+  SFFloat [in,out] intensity        1     [0,1]
+  SFNode  [in,out] metadata         NULL  [X3DMetadataObject]
+  SFBool  [in,out] on               TRUE
+}
+X3DTextureCoordinateNode : X3DGeometricPropertyNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DTexture2DNode : X3DTextureNode {
+  SFNode [in,out] metadata          NULL [X3DMetadataObject]
+  SFBool []       repeatS           TRUE
+  SFBool []       repeatT           TRUE
+  SFNode []       textureProperties NULL [TextureProperties]
+}
+X3DTextureTransformNode : X3DAppearanceChildNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DTexture3DNode : X3DTextureNode {
+  SFNode [in,out] metadata          NULL  [X3DMetadataObject]
+  SFBool []       repeatS           FALSE
+  SFBool []       repeatT           FALSE
+  SFBool []       repeatR           FALSE
+  SFNode []       textureProperties NULL  [TextureProperties]
+}
+X3DTextureNode : X3DAppearanceChildNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DInterpolatorNode : X3DChildNode {
+  SFFloat      [in]     set_fraction       (-∞,∞)
+  MFFloat      [in,out] key           []   (-∞,∞)
+  MF<type>     [in,out] keyValue      []
+  SFNode       [in,out] metadata      NULL [X3DMetadataObject]
+  [S|M]F<type> [out]    value_changed
+}
+X3DDragSensorNode : X3DPointingDeviceSensorNode {
+  SFBool   [in,out] autoOffset         TRUE
+  SFString [in,out] description        ""
+  SFBool   [in,out] enabled            TRUE
+  SFNode   [in,out] metadata           NULL [X3DMetadataObject]
+  SFBool   [out]    isActive
+  SFBool   [out]    isOver
+  SFVec3f  [out]    trackPoint_changed
+}
+X3DPointingDeviceSensorNode : X3DSensorNode {
+  SFString [in,out] description ""
+  SFBool   [in,out] enabled     TRUE
+  SFNode   [in,out] metadata    NULL [X3DMetadataObject]
+  SFBool   [out]    isActive
+  SFBool   [out]    isOver
+}
+X3DTouchSensorNode : X3DPointingDeviceSensorNode {
+  SFString [in,out] description ""
+  SFBool   [in,out] enabled     TRUE
+  SFNode   [in,out] metadata    NULL [X3DMetadataObject]
+  SFBool   [out]    isActive
+  SFBool   [out]    isOver
+  SFTime   [out]    touchTime
+}
+X3DKeyDeviceSensorNode : X3DSensorNode {
+  SFBool   [in,out] enabled  TRUE
+  SFNode   [in,out] metadata NULL [X3DMetadataObject]
+  SFBool   [out]    isActive
+}
+X3DEnvironmentalSensorNode : X3DSensorNode {
+  SFVec3f/d [in,out] center    0 0 0 (-∞,∞)
+  SFBool    [in,out] enabled   TRUE
+  SFNode    [in,out] metadata  NULL  [X3DMetadataObject]
+  SFVec3f   [in,out] size      0 0 0 (-∞,∞)
+  SFTime    [out]    enterTime
+  SFTime    [out]    exitTime
+  SFBool    [out]    isActive
+}
+X3DViewpointNode : X3DBindableNode {
+  SFBool     [in]     set_bind
+  SFVec3f/d  [in,out] centerOfRotation  0 0 0     (-∞,∞)
+  SFString   [in,out] description       ""
+  SFBool     [in,out] jump              TRUE
+  SFNode     [in,out] metadata          NULL      [X3DMetadataObject]
+  SFRotation [in,out] orientation       0 0 1 0   (-∞,∞)
+  SFVec3f/d  [in,out] position          0 0 10    (-∞,∞)
+  SFBool     [in,out] retainUserOffsets FALSE
+  SFTime     [out]    bindTime
+  SFBool     [out]    isBound
+}
+X3DBackgroundNode : X3DBindableNode {
+  SFBool  [in]     set_bind
+  MFFloat [in,out] groundAngle   []      [0,π/2]
+  MFColor [in,out] groundColor   []      [0,1]
+  SFNode  [in,out] metadata      NULL    [X3DMetadataObject]
+  MFFloat [in,out] skyAngle      []      [0,π]
+  MFColor [in,out] skyColor      0 0 0   [0,1]
+  SFFloat [in,out] transparency  0       [0,1]
+  SFTime  [out]    bindTime
+  SFBool  [out]    isBound
+}
+X3DFogObject {
+  SFColor  [in,out] color           1 1 1    [0,1]
+  SFString [in,out] fogType         "LINEAR" ["LINEAR"|"EXPONENTIAL"]
+  SFFloat  [in,out] visibilityRange 0        [0,-∞)
+}
+X3DNurbsControlCurveNode : X3DNode {
+  MFVec2d  [in,out] controlPoint []   (-∞,∞)
+  SFNode   [in,out] metadata     NULL [X3DMetadataObject]
+}
+X3DNurbsSurfaceGeometryNode : X3DParametricGeometryNode {
+  SFNode   [in,out] controlPoint  NULL  [X3DCoordinateNode]
+  SFNode   [in,out] metadata      NULL  [X3DMetadataObject]
+  SFNode   [in,out] texCoord      NULL  [X3DTextureCoordinateNode|NurbsTextureCoordinate]
+  SFInt32  [in,out] uTessellation 0     (-∞,∞)
+  SFInt32  [in,out] vTessellation 0     (-∞,∞)
+  MFDouble [in,out] weight        []    (0,∞)
+  SFBool   []       solid         TRUE
+  SFBool   []       uClosed       FALSE
+  SFInt32  []       uDimension    0     [0,∞)
+  MFDouble []       uKnot         []    (-∞,∞)
+  SFInt32  []       uOrder        3     [2,∞)
+  SFBool   []       vClosed       FALSE
+  SFInt32  []       vDimension    0     [0,∞)
+  MFDouble []       vKnot         []    (-∞,∞)
+  SFInt32  []       vOrder        3     [2,∞)
+}
+X3DScriptNode : X3DChildNode,X3DURLObject {
+  SFNode   [in,out] metadata NULL [X3DMetadataObject]
+  MFString [in,out] url      []   [URI]
+}
+
+X3DParametricGeometryNode : X3DGeometryNode {
+  SFNode [in,out] metadata NULL  [X3DMetadataObject]
+}
+X3DSequencerNode : X3DChildNode {
+  SFBool       [in]     next
+  SFBool       [in]     previous
+  SFFloat      [in]     set_fraction       (-∞,∞)
+  MFFloat      [in,out] key           []   (-∞,∞)
+  MF<type>     [in,out] keyValue      []
+  SFNode       [in,out] metadata      NULL [X3DMetadataObject]
+  [S|M]F<type> [out]    value_changed
+}
+X3DTriggerNode : X3DChildNode  {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DProgrammableShaderObject {
+}
+X3DShaderNode : X3DAppearanceChildNode {
+  SFBool   [in]     activate
+  SFNode   [in,out] metadata   NULL [X3DMetadataObject]
+  SFBool   [out]    isSelected
+  SFBool   [out]    isValid
+  SFString []       language   ""   ["Cg"|"GLSL"|"HLSL"|...]
+}
+X3DVertexAttributeNode : X3DGeometricPropertyNode {
+  SFNode   [in,out] metadata NULL [X3DMetadataObject]
+  SFString []       name     ""
+}
+X3DProductStructureChildNode : X3DChildNode {
+  SFNode   [in,out] metadata NULL [X3DMetadataObject]
+  SFString [in,out] name     ""
+}
+X3DEnvironmentTextureNode : X3DTextureNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DLayerNode : X3DNode {
+  SFBool [in,out] isPickable TRUE
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+  SFNode [in,out] viewport NULL [X3DViewportNode]
+}
+X3DLayoutNode : X3DChildNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+
+X3DViewportNode : X3DGroupingNode {
+  MFNode  [in]     addChildren             [X3DChildNode]
+  MFNode  [in]     removeChildren          [X3DChildNode]
+  MFNode  [in,out] children       []       [X3DChildNode]
+  SFNode  [in,out] metadata       NULL     [X3DMetadataObject]
+  SFVec3f []       bboxCenter     0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize       -1 -1 -1 (0,∞) or -1 -1 -1
+}
+X3DNBodyCollidableNode : X3DChildNode, X3DBoundedObject {
+  SFBool     [in,out] enabled     TRUE
+  SFNode     [in,out] metadata    NULL     [X3DMetadataObject]
+  SFRotation [in,out] rotation    0 0 1 0  [0,1]
+  SFVec3f    [in,out] translation 0 0 0    (-∞,∞)
+  SFVec3f    []       bboxCenter  0 0 0    (-∞,∞)
+  SFVec3f    []       bboxSize    -1 -1 -1 [0,∞) or -1 -1 -1
+}
+X3DNBodyCollisionSpaceNode : X3DNode, X3DBoundedObject {
+  SFBool  [in,out] enabled    TRUE
+  SFNode  [in,out] metadata   NULL     [X3DMetadataObject]
+  SFVec3f []       bboxCenter 0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize   -1 -1 -1 [0,∞) or -1 -1 -1
+}
+X3DRigidJointNode : X3DNode {
+  SFNode   [in,out] body1       NULL   [RigidBody]
+  SFNode   [in,out] body2       NULL   [RigidBody]
+  MFString [in,out] forceOutput "NONE" ["ALL","NONE",...]
+  SFNode   [in,out] metadata    NULL   [X3DMetadataObject]
+}
+X3DFollowerNode : X3DChildNode {
+  [S|M]F<type> [in]     set_destination
+  [S|M]F<type> [in]     set_value
+  SFNode       [in,out] metadata           NULL [X3DMetadataObject]
+  SFBool       [out]    isActive
+  [S|M]F<type> [out]    value_changed
+  [S|M]F<type> []       initialDestination
+  [S|M]F<type> []       initialValue
+}
+X3DDamperNode : X3DFollowerNode {
+  [S|M]F<type> [in]     set_destination
+  [S|M]F<type> [in]     set_value
+  SFNode       [in,out] metadata           NULL   [X3DMetadataObject]
+  SFTime       [in,out] tau                0.3    [0,∞)
+  SFFloat      [in,out] tolerance          -1     -1 or [0,∞)
+  SFBool       [out]    isActive
+  [S|M]F<type> [out]    value_changed
+  [S|M]F<type> []       initialDestination
+  [S|M]F<type> []       initialValue
+  SFInt32      []       order              3     [0..5]
+}
+X3DChaserNode : X3DFollowerNode {
+  [S|M]F<type> [in]     set_destination
+  [S|M]F<type> [in]     set_value
+  SFNode       [in,out] metadata           NULL  [X3DMetadataObject]
+  SFBool       [out]    isActive
+  [S|M]F<type> [out]    value_changed
+  SFTime       []       duration           1     [0,∞)
+  [S|M]F<type> []       initialDestination
+  [S|M]F<type> []       initialValue
+}
+X3DParticleEmitterNode : X3DNode {
+  SFNode  [in,out] metadata    NULL [X3DMetadataObject]
+  SFFloat [in,out] speed       0    [0,∞)
+  SFFloat [in,out] variation   0.25 [0,∞)
+  SFFloat []       mass        0    [0,∞)
+  SFFloat []       surfaceArea 0    [0,∞)
+}
+X3DParticlePhysicsModelNode : X3DNode {
+  SFBool [in,out] enabled  TRUE
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DComposableVolumeRenderStyleNode : X3DVolumeRenderStyleNode {
+  SFBool   [in,out] enabled  TRUE
+  SFNode   [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DVolumeDataNode : X3DChildNode, X3DBoundedObject {
+  SFVec3f [in,out] dimensions  1 1 1    (0,∞)
+  SFNode  [in,out] metadata    NULL     [X3DMetadataObject]
+  SFVec3f []       bboxCenter  0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize    -1 -1 -1 [0,∞) or -1 -1 -1
+}
+X3DVolumeRenderStyleNode : X3DNode {
+  SFBool   [in,out] enabled  TRUE
+  SFNode   [in,out] metadata NULL [X3DMetadataObject]
+}
+X3DPickableObject {
+  MFString [in,out] objectType "ALL" ["ALL","NONE","TERRAIN",...]
+  SFBool   [in,out] pickable   TRUE
+}
+X3DPickSensorNode : X3DSensorNode {
+  SFBool   [in,out] enabled          TRUE
+  SFNode   [in,out] metadata         NULL        [X3DMetadataObject]
+  SFString [in,out] matchCriterion   "MATCH_ANY" ["MATCH_ANY"|"MATCH_EVERY"|
+                                                  "MATCH_ONLY_ONE"]
+  MFString [in,out] objectType       "ALL"       ["ALL","NONE","TERRAIN",...]
+  SFNode   [in,out] pickingGeometry  NULL        [X3DGeometryNode]
+  MFNode   [in,out] pickTarget       []          [X3DGroupingNode|X3DShapeNode|Inline]
+  MFNode   [out]    pickedGeometry
+  SFBool   [out]    isActive
+  SFString []       intersectionType "BOUNDS"    ["GEOMETRY"|"BOUNDS"|...]
+  SFString []       sortOrder        "CLOSEST"   ["ANY"|"CLOSEST"|"ALL"|"ALL_SORTED"]
+}

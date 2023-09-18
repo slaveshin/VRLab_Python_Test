@@ -1,0 +1,3 @@
+Pillow==8.2.0
+PyOpenGL @ file:///C:/Users/khsh5/Downloads/PyOpenGL-3.1.5-cp38-cp38-win32.whl
+PyOpenGL-accelerate @ file:///C:/Users/khsh5/Downloads/PyOpenGL_accelerate-3.1.5-cp38-cp38-win32.whl

@@ -1,0 +1,2672 @@
+Box : X3DGeometryNode {
+  SFNode  [in,out] metadata NULL  [X3DMetadataObject]
+  SFVec3f []       size     2 2 2 (0,∞)
+  SFBool  []       solid    TRUE
+}
+
+Cone : X3DGeometryNode {
+  SFNode  [in,out] metadata     NULL [X3DMetadataObject]
+  SFBool  []       bottom       TRUE
+  SFFloat []       bottomRadius 1    (0,∞)
+  SFFloat []       height       2    (0,∞)
+  SFBool  []       side         TRUE
+  SFBool  []       solid        TRUE
+}
+
+Cylinder : X3DGeometryNode {
+  SFNode  [in,out] metadata NULL [X3DMetadataObject]
+  SFBool  []       bottom   TRUE
+  SFFloat []       height   2    (0,∞)
+  SFFloat []       radius   1    (0,∞)
+  SFBool  []       side     TRUE
+  SFBool  []       solid    TRUE
+  SFBool  []       top      TRUE
+}
+
+Sphere : X3DGeometryNode {
+  SFNode  [in,out] metadata NULL [X3DMetadataObject]
+  SFFloat []       radius   1    (0,∞)
+  SFBool  []       solid    TRUE
+}
+
+ElevationGrid : X3DGeometryNode {
+  MFFloat [in]     set_height
+  MFNode  [in,out] attrib          []   [X3DVertexAttributeNode]
+  SFNode  [in,out] color           NULL [X3DColorNode]
+  SFNode  [in,out] fogCoord        NULL [FogCoordinate]
+  SFNode  [in,out] metadata        NULL [X3DMetadataObject]
+  SFNode  [in,out] normal          NULL [X3DNormalNode]
+  SFNode  [in,out] texCoord        NULL [X3DTextureCoordinateNode]
+  SFBool  []       ccw             TRUE
+  SFBool  []       colorPerVertex  TRUE
+  SFFloat []       creaseAngle     0    [0,∞)
+  MFFloat []       height          []   (-∞,∞)
+  SFBool  []       normalPerVertex TRUE
+  SFBool  []       solid           TRUE
+  SFInt32 []       xDimension      0    [0,∞)
+  SFFloat []       xSpacing        1.0  (0,∞)
+  SFInt32 []       zDimension      0    [0,∞)
+  SFFloat []       zSpacing        1.0  (0,∞)
+}
+
+Extrusion : X3DGeometryNode {
+  MFVec2f    [in]     set_crossSection
+  MFRotation [in]     set_orientation
+  MFVec2f    [in]     set_scale
+  MFVec3f    [in]     set_spine
+  SFNode     [in,out] metadata         NULL                      [X3DMetadataObject]
+  SFBool     []       beginCap         TRUE
+  SFBool     []       ccw              TRUE
+  SFBool     []       convex           TRUE
+  SFFloat    []       creaseAngle      0                         [0,∞)
+  MFVec2f    []       crossSection     [1 1 1 -1 -1 -1 -1 1 1 1] (-∞,∞)
+  SFBool     []       endCap           TRUE
+  MFRotation []       orientation      0 0 1 0                   [-1,1] or (-∞,∞)
+  MFVec2f    []       scale            1 1                       (0,∞)
+  SFBool     []       solid            TRUE
+  MFVec3f    []       spine            [0 0 0 0 1 0]             (-∞,∞)
+}
+
+IndexedFaceSet : X3DComposedGeometryNode {
+  MFInt32 [in]     set_colorIndex
+  MFInt32 [in]     set_coordIndex
+  MFInt32 [in]     set_normalIndex
+  MFInt32 [in]     set_texCoordIndex
+  MFNode  [in,out] attrib            []   [X3DVertexAttributeNode]
+  SFNode  [in,out] color             NULL [X3DColorNode]
+  SFNode  [in,out] coord             NULL [X3DCoordinateNode]
+  SFNode  [in,out] fogCoord          NULL [FogCoordinate]
+  SFNode  [in,out] metadata          NULL [X3DMetadataObject]
+  SFNode  [in,out] normal            NULL [X3DNormalNode]
+  SFNode  [in,out] texCoord          NULL [X3DTextureCoordinateNode]
+  SFBool  []       ccw               TRUE
+  MFInt32 []       colorIndex        []   [0,∞) or -1
+  SFBool  []       colorPerVertex    TRUE
+  SFBool  []       convex            TRUE
+  MFInt32 []       coordIndex        []   [0,∞) or -1
+  SFFloat []       creaseAngle       0    [0,∞)
+  MFInt32 []       normalIndex       []   [0,∞) or -1
+  SFBool  []       normalPerVertex   TRUE
+  SFBool  []       solid             TRUE
+  MFInt32 []       texCoordIndex     []   [-1,∞)
+}
+
+WorldInfo : X3DInfoNode {
+  SFNode   [in,out] metadata NULL [X3DMetadataObject]
+  MFString []       info     []
+  SFString []       title    ""
+}
+
+MetadataBoolean : X3DNode, X3DMetadataObject {
+  SFNode   [in,out] metadata  NULL [X3DMetadataObject]
+  SFString [in,out] name      ""
+  SFString [in,out] reference ""
+  MFBool   [in,out] value     []
+}
+
+MetadataDouble : X3DNode, X3DMetadataObject {
+  SFNode   [in,out] metadata  NULL [X3DMetadataObject]
+  SFString [in,out] name      ""
+  SFString [in,out] reference ""
+  MFDouble [in,out] value     []
+}
+
+MetadataFloat : X3DNode, X3DMetadataObject {
+  SFNode   [in,out] metadata  NULL [X3DMetadataObject]
+  SFString [in,out] name      ""
+  SFString [in,out] reference ""
+  MFFloat  [in,out] value     []
+}
+
+MetadataInteger : X3DNode, X3DMetadataObject {
+  SFNode   [in,out] metadata  NULL [X3DMetadataObject]
+  SFString [in,out] name      ""
+  SFString [in,out] reference ""
+  MFInt32  [in,out] value     []
+}
+
+MetadataSet : X3DNode, X3DMetadataObject {
+  SFNode   [in,out] metadata  NULL [X3DMetadataObject]
+  SFString [in,out] name      ""
+  SFString [in,out] reference ""
+  MFNode   [in,out] value     [] [X3DMetadataObject]
+}
+
+MetadataString : X3DNode, X3DMetadataObject {
+  SFNode   [in,out] metadata  NULL [X3DMetadataObject]
+  SFString [in,out] name      ""
+  SFString [in,out] reference ""
+  MFString [in,out] value     []
+}
+
+TimeSensor : X3DTimeDependentNode, X3DSensorNode {
+  SFTime  [in,out] cycleInterval    1     (0,∞)
+  SFBool  [in,out] enabled          TRUE
+  SFBool  [in,out] loop             FALSE
+  SFNode  [in,out] metadata         NULL  [X3DMetadataObject]
+  SFTime  [in,out] pauseTime        0     (-∞,∞)
+  SFTime  [in,out] resumeTime       0
+  SFTime  [in,out] startTime        0     (-∞,∞)
+  SFTime  [in,out] stopTime         0     (-∞,∞)
+  SFTime  [out]    cycleTime
+  SFTime  [out]    elapsedTime
+  SFFloat [out]    fraction_changed
+  SFBool  [out]    isActive
+  SFBool  [out]    isPaused
+  SFTime  [out]    time
+}
+
+Anchor : X3DGroupingNode,X3DUrlObject { 
+  MFNode   [in]     addChildren
+  MFNode   [in]     removeChildren
+  MFNode   [in,out] children       []       [X3DChildNode]
+  SFString [in,out] description    ""
+  SFNode   [in,out] metadata       NULL     [X3DMetadataObject]
+  MFString [in,out] parameter      []
+  MFString [in,out] url            []       [URI]
+  SFVec3f  []       bboxCenter     0 0 0    (-∞,∞)
+  SFVec3f  []       bboxSize       -1 -1 -1 [0,∞) or −1 −1 −1 
+}
+
+Inline : X3DChildNode, X3DBoundedObject, X3DUrlObject {
+  SFBool   [in,out] load       TRUE
+  SFNode   [in,out] metadata   NULL     [X3DMetadataObject]
+  MFString [in,out] url        []       [URI]
+  SFVec3f  []       bboxCenter 0 0 0    (-∞,∞)
+  SFVec3f  []       bboxSize   -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+LoadSensor : X3DNetworkSensorNode {
+  SFBool  [in,out] enabled   TRUE
+  SFNode  [in,out] metadata  NULL [X3DMetadataObject]
+  SFTime  [in,out] timeOut   0
+  MFNode  [in,out] watchList []   [X3DUrlObject]
+  SFBool  [out]    isActive
+  SFBool  [out]    isLoaded
+  SFTime  [out]    loadTime
+  SFFloat [out]    progress
+}
+
+Group : X3DGroupingNode {
+  MFNode  [in]     addChildren             [X3DChildNode]
+  MFNode  [in]     removeChildren          [X3DChildNode]
+  MFNode  [in,out] children       []       [X3DChildNode]
+  SFNode  [in,out] metadata       NULL     [X3DMetadataObject]
+  SFVec3f []       bboxCenter     0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize       -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+StaticGroup : X3DChildNode, X3DBoundedObject {
+  SFNode  [in,out] metadata   NULL     [X3DMetadataObject]
+  MFNode  []       children   []       [X3DChildNode]
+  SFVec3f []       bboxCenter 0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize   -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+Switch : X3DGroupingNode {
+  MFNode  [in]     addChildren             [X3DChildNode]
+  MFNode  [in]     removeChildren          [X3DChildNode]
+  MFNode  [in,out] children       []       [X3DChildNode]
+  SFNode  [in,out] metadata       NULL     [X3DMetadataObject]
+  SFInt32 [in,out] whichChoice    -1       [-1,∞)
+  SFVec3f []       bboxCenter     0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize       -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+Transform : X3DGroupingNode {
+  MFNode     [in]     addChildren               [X3DChildNode]
+  MFNode     [in]     removeChildren            [X3DChildNode]
+  SFVec3f    [in,out] center           0 0 0    (-∞,∞)
+  MFNode     [in,out] children         []       [X3DChildNode]
+  SFNode     [in,out] metadata         NULL     [X3DMetadataObject]
+  SFRotation [in,out] rotation         0 0 1 0  [-1,1] or (-∞,∞)
+  SFVec3f    [in,out] scale            1 1 1    (-∞, ∞)
+  SFRotation [in,out] scaleOrientation 0 0 1 0  [-1,1] or (-∞,∞)
+  SFVec3f    [in,out] translation      0 0 0    (-∞,∞)
+  SFVec3f    []       bboxCenter       0 0 0    (-∞,∞)
+  SFVec3f    []       bboxSize         -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+ClipPlane : X3DChildNode { 
+  SFBool  [in,out] enabled  TRUE
+  SFNode  [in,out] metadata NULL    [X3DMetadataObject]
+  SFVec4f [in,out] plane    0 1 0 0 [0,1]
+}
+
+Color : X3DColorNode { 
+  MFColor [in,out] color    [NULL] [0,1]
+  SFNode  [in,out] metadata NULL   [X3DMetadataObject]
+}
+
+ColorRGBA : X3DColorNode { 
+  MFColorRGBA [in,out] color    [NULL] [0,1]
+  SFNode      [in,out] metadata NULL   [X3DMetadataObject]
+}
+
+IndexedLineSet : X3DGeometryNode {
+  MFInt32 [in]     set_colorIndex
+  MFInt32 [in]     set_coordIndex
+  MFNode  [in,out] attrib         []   [X3DVertexAttributeNode]
+  SFNode  [in,out] color          NULL [X3DColorNode]
+  SFNode  [in,out] coord          NULL [X3DCoordinateNode]
+  SFNode  [in,out] fogCoord       NULL [FogCoordinate]
+  SFNode  [in,out] metadata       NULL [X3DMetadataObject]
+  MFInt32 []       colorIndex     []   [0,∞) or -1
+  SFBool  []       colorPerVertex TRUE
+  MFInt32 []       coordIndex     []   [0,∞) or -1
+}
+
+IndexedTriangleFanSet : X3DComposedGeometryNode {
+  MFInt32 [in]     set_index       []   [0,∞) or -1
+  MFNode  [in,out] attrib          []   [X3DVertexAttributeNode]
+  SFNode  [in,out] color           NULL [X3DColorNode]
+  SFNode  [in,out] coord           NULL [X3DCoordinateNode]
+  SFNode  [in,out] fogCoord        NULL [FogCoordinate]
+  SFNode  [in,out] metadata        NULL [X3DMetadataObject]
+  SFNode  [in,out] normal          NULL [X3DNormalNode]
+  SFNode  [in,out] texCoord        NULL [X3DTextureCoordinateNode]
+  SFBool  []       ccw             TRUE
+  SFBool  []       colorPerVertex  TRUE
+  SFBool  []       normalPerVertex TRUE
+  SFBool  []       solid           TRUE
+  MFInt32 []       index           []   [0,∞) or -1
+}
+
+IndexedTriangleSet : X3DComposedGeometryNode {
+  MFInt32 [in]     set_index       []   [0,∞)
+  MFNode  [in,out] attrib          []   [X3DVertexAttributeNode]
+  SFNode  [in,out] color           NULL [X3DColorNode]
+  SFNode  [in,out] coord           NULL [X3DCoordinateNode]
+  SFNode  [in,out] fogCoord        NULL [FogCoordinate]
+  SFNode  [in,out] metadata        NULL [X3DMetadataObject]
+  SFNode  [in,out] normal          NULL [X3DNormalNode]
+  SFNode  [in,out] texCoord        NULL [X3DTextureCoordinateNode]
+  SFBool  []       ccw             TRUE
+  SFBool  []       colorPerVertex  TRUE
+  SFBool  []       normalPerVertex TRUE
+  SFBool  []       solid           TRUE
+  MFInt32 []       index           []   [0,∞)
+}
+
+IndexedTriangleStripSet : X3DComposedGeometryNode {
+  MFInt32 [in]     set_index       []   [0,∞) or −1
+  MFNode  [in,out] attrib          []   [X3DVertexAttributeNode]
+  SFNode  [in,out] color           NULL [X3DColorNode]
+  SFNode  [in,out] coord           NULL [X3DCoordinateNode]
+  SFNode  [in,out] fogCoord        NULL [FogCoordinate]
+  SFNode  [in,out] metadata        NULL [X3DMetadataObject]
+  SFNode  [in,out] normal          NULL [X3DNormalNode]
+  SFNode  [in,out] texCoord        NULL [X3DTextureCoordinateNode]
+  SFBool  []       ccw             TRUE
+  SFBool  []       colorPerVertex  TRUE
+  SFBool  []       normalPerVertex TRUE
+  SFBool  []       solid           TRUE
+  MFInt32 []       index           []   [0,∞) or −1
+}
+
+LineSet : X3DGeometryNode {
+  MFNode  [in,out] attrib         []   [X3DVertexAttributeNode]
+  SFNode  [in,out] color          NULL [X3DColorNode]
+  SFNode  [in,out] coord          NULL [X3DCoordinateNode]
+  SFNode  [in,out] fogCoord       NULL [FogCoordinate]
+  SFNode  [in,out] metadata       NULL [X3DMetadataObject]
+  MFInt32 [in,out] vertexCount    []   [2,∞)
+}
+
+Normal : X3DNormalNode { 
+  SFNode  [in,out] metadata NULL [X3DMetadataObject]
+  MFVec3f [in,out] vector   []   [-1,1]
+}
+
+PointSet : X3DGeometryNode { 
+  MFNode [in,out] attrib   []   [X3DVertexAttributeNode]
+  SFNode [in,out] color    NULL [X3DColorNode]
+  SFNode [in,out] coord    NULL [X3DCoordinateNode]
+  SFNode [in,out] fogCoord NULL [FogCoordinate]
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+
+TriangleFanSet : X3DComposedGeometryNode {
+  MFNode  [in,out] attrib          []   [X3DVertexAttributeNode]
+  SFNode  [in,out] color           NULL [X3DColorNode]
+  SFNode  [in,out] coord           NULL [X3DCoordinateNode]
+  MFInt32 [in,out] fanCount        []   [3,∞)
+  SFNode  [in,out] fogCoord        NULL [FogCoordinate]
+  SFNode  [in,out] metadata        NULL [X3DMetadataObject]
+  SFNode  [in,out] normal          NULL [X3DNormalNode]
+  SFNode  [in,out] texCoord        NULL [X3DTextureCoordinateNode]
+  SFBool  []       ccw             TRUE
+  SFBool  []       colorPerVertex  TRUE
+  SFBool  []       normalPerVertex TRUE
+  SFBool  []       solid           TRUE
+}
+
+TriangleSet : X3DComposedGeometryNode {
+  MFNode  [in,out] attrib          []   [X3DVertexAttributeNode]
+  SFNode  [in,out] color           NULL [X3DColorNode]
+  SFNode  [in,out] coord           NULL [X3DCoordinateNode]
+  SFNode  [in,out] fogCoord        NULL [FogCoordinate]
+  SFNode  [in,out] metadata        NULL [X3DMetadataObject]
+  SFNode  [in,out] normal          NULL [X3DNormalNode]
+  SFNode  [in,out] texCoord        NULL [X3DTextureCoordinateNode]
+  SFBool  []       ccw             TRUE
+  SFBool  []       colorPerVertex  TRUE
+  SFBool  []       normalPerVertex TRUE
+  SFBool  []       solid           TRUE
+}
+
+TriangleStripSet : X3DComposedGeometryNode {
+  MFNode  [in,out] attrib          []   [X3DVertexAttributeNode]
+  SFNode  [in,out] color           NULL [X3DColorNode]
+  SFNode  [in,out] coord           NULL [X3DCoordinateNode]
+  SFNode  [in,out] fogCoord        NULL [FogCoordinate]
+  SFNode  [in,out] metadata        NULL [X3DMetadataObject]
+  SFNode  [in,out] normal          NULL [X3DNormalNode]
+  MFInt32 [in,out] stripCount      []   [3,∞)
+  SFNode  [in,out] texCoord        NULL [X3DTextureCoordinateNode]
+  SFBool  []       ccw             TRUE
+  SFBool  []       colorPerVertex  TRUE
+  SFBool  []       normalPerVertex TRUE
+  SFBool  []       solid           TRUE
+}
+
+Appearance : X3DAppearanceNode { 
+  SFNode [in,out] fillProperties   NULL [FillProperties]
+  SFNode [in,out] lineProperties   NULL [LineProperties]
+  SFNode [in,out] material         NULL [X3DMaterialNode]
+  SFNode [in,out] metadata         NULL [X3DMetadataObject]
+  MFNode [in,out] shaders          []   [X3DShaderNode]
+  SFNode [in,out] texture          NULL [X3DTextureNode]
+  SFNode [in,out] textureTransform NULL [X3DTextureTransformNode]
+}
+
+FillProperties : X3DAppearanceChildNode { 
+  SFBool  [in,out] filled     TRUE
+  SFColor [in,out] hatchColor 1 1 1 [0,1]
+  SFBool  [in,out] hatched    TRUE
+  SFInt32 [in,out] hatchStyle 1     [0,∞)
+  SFNode  [in,out] metadata   NULL  [X3DMetadataObject]
+}
+
+LineProperties : X3DAppearanceChildNode { 
+  SFBool  [in,out] applied              TRUE
+  SFInt32 [in,out] linetype             1    [1,∞)
+  SFFloat [in,out] linewidthScaleFactor 0    (-∞,∞)
+  SFNode  [in,out] metadata             NULL [X3DMetadataObject]
+}
+
+Material : X3DMaterialNode { 
+  SFFloat [in,out] ambientIntensity 0.2         [0,1]
+  SFColor [in,out] diffuseColor     0.8 0.8 0.8 [0,1]
+  SFColor [in,out] emissiveColor    0 0 0       [0,1]
+  SFNode  [in,out] metadata         NULL        [X3DMetadataObject]
+  SFFloat [in,out] shininess        0.2         [0,1]
+  SFColor [in,out] specularColor    0 0 0       [0,1]
+  SFFloat [in,out] transparency     0           [0,1]
+}
+
+Shape : X3DShapeNode {
+  SFNode  [in,out] appearance NULL     [X3DAppearanceNode]
+  SFNode  [in,out] geometry   NULL     [X3DGeometryNode]
+  SFNode  [in,out] metadata   NULL     [X3DMetadataObject]
+  SFVec3f []       bboxCenter 0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize   -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+TwoSidedMaterial : X3DMaterialNode {
+  SFFloat [in,out] ambientIntensity     0.2         [0,1]
+  SFFloat [in,out] backAmbientIntensity 0.2         [0,1]
+  SFColor [in,out] backDiffuseColor     0.8 0.8 0.8 [0,1]
+  SFColor [in,out] backEmissiveColor    0 0 0       [0,1]
+  SFFloat [in,out] backShininess        0.2         [0,1]
+  SFColor [in,out] backSpecularColor    0 0 0       [0,1]
+  SFFloat [in,out] backTransparency     0           [0,1]
+  SFColor [in,out] diffuseColor         0.8 0.8 0.8 [0,1]
+  SFColor [in,out] emissiveColor        0 0 0       [0,1]
+  SFNode  [in,out] metadata             NULL        [X3DMetadataObject]
+  SFFloat [in,out] shininess            0.2         [0,1]
+  SFBool  [in,out] separateBackColor    FALSE
+  SFColor [in,out] specularColor        0 0 0       [0,1]
+  SFFloat [in,out] transparency         0           [0,1]
+}
+
+FontStyle : X3DFontStyleNode {
+  SFNode   [in,out] metadata    NULL    [X3DMetadataObject]
+  MFString []       family      "SERIF"
+  SFBool   []       horizontal  TRUE
+  MFString []       justify     "BEGIN" ["BEGIN","END","FIRST","MIDDLE",""]
+  SFString []       language    ""
+  SFBool   []       leftToRight TRUE
+  SFFloat  []       size        1.0     (0,∞)
+  SFFloat  []       spacing     1.0     [0,∞)
+  SFString []       style       "PLAIN" ["PLAIN"|"BOLD"|"ITALIC"|"BOLDITALIC"|""]
+  SFBool   []       topToBottom TRUE
+}
+
+Text : X3DGeometryNode {
+  SFNode   [in,out] fontStyle  NULL  [X3DFontStyleNode]
+  MFFloat  [in,out] length     []    [0,∞)
+  SFFloat  [in,out] maxExtent  0.0   [0,∞)
+  SFNode   [in,out] metadata   NULL  [X3DMetadataObject]
+  MFString [in,out] string     []
+  MFVec2f  [out]    lineBounds
+  SFVec3f  [out]    origin
+  SFVec2f  [out]    textBounds
+  SFBool   []       solid      FALSE
+}
+
+AudioClip : X3DSoundSourceNode, X3DUrlObject {
+  SFString [in,out] description      ""
+  SFBool   [in,out] loop             FALSE
+  SFNode   [in,out] metadata         NULL  [X3DMetadataObject]
+  SFTime   [in,out] pauseTime        0     (-∞,∞)
+  SFFloat  [in,out] pitch            1.0   (0,∞)
+  SFTime   [in,out] resumeTime       0     (-∞,∞)
+  SFTime   [in,out] startTime        0     (-∞,∞)
+  SFTime   [in,out] stopTime         0     (-∞,∞)
+  MFString [in,out] url              []    [URI]
+  SFTime   [out]    duration_changed
+  SFTime   [out]    elapsedTime
+  SFBool   [out]    isActive
+  SFBool   [out]    isPaused
+}
+
+Sound : X3DSoundNode {
+  SFVec3f [in,out] direction  0 0 1 (-∞,∞)
+  SFFloat [in,out] intensity  1     [0,1]
+  SFVec3f [in,out] location   0 0 0 (-∞,∞)
+  SFFloat [in,out] maxBack    10    [0,∞)
+  SFFloat [in,out] maxFront   10    [0,∞)
+  SFNode  [in,out] metadata   NULL  [X3DMetadataObject]
+  SFFloat [in,out] minBack    1     [0,∞)
+  SFFloat [in,out] minFront   1     [0,∞)
+  SFFloat [in,out] priority   0     [0,1]
+  SFNode  [in,out] source     NULL  [X3DSoundSourceNode]
+  SFBool  []       spatialize TRUE
+}
+
+DirectionalLight : X3DLightNode {
+  SFFloat [in,out] ambientIntensity 0      [0,1]
+  SFColor [in,out] color            1 1 1  [0,1]
+  SFVec3f [in,out] direction        0 0 -1 (-∞,∞)
+  SFBool  [in,out] global           FALSE
+  SFFloat [in,out] intensity        1      [0,1]
+  SFNode  [in,out] metadata         NULL   [X3DMetadataObject]
+  SFBool  [in,out] on               TRUE
+}
+
+PointLight : X3DLightNode {
+  SFFloat [in,out] ambientIntensity 0     [0,1]
+  SFVec3f [in,out] attenuation      1 0 0 [0,∞)
+  SFColor [in,out] color            1 1 1 [0,1]
+  SFBool  [in,out] global           TRUE
+  SFFloat [in,out] intensity        1     [0,1]
+  SFVec3f [in,out] location         0 0 0 (-∞,∞)
+  SFNode  [in,out] metadata         NULL  [X3DMetadataObject]
+  SFBool  [in,out] on               TRUE
+  SFFloat [in,out] radius           100   [0,∞)
+}
+
+SpotLight : X3DLightNode {
+  SFFloat [in,out] ambientIntensity 0        [0,1]
+  SFVec3f [in,out] attenuation      1 0 0    [0,∞)
+  SFFloat [in,out] beamWidth        π/4      (0,π/2]
+  SFColor [in,out] color            1 1 1    [0,1]
+  SFFloat [in,out] cutOffAngle      π/2      (0,π/2]
+  SFVec3f [in,out] direction        0 0 -1   (-∞,∞)
+  SFBool  [in,out] global           TRUE
+  SFFloat [in,out] intensity        1        [0,1]
+  SFVec3f [in,out] location         0 0 0    (-∞,∞)
+  SFNode  [in,out] metadata         NULL     [X3DMetadataObject]
+  SFBool  [in,out] on               TRUE
+  SFFloat [in,out] radius           100      [0,∞)
+}
+
+ImageTexture : X3DTexture2DNode, X3DUrlObject { 
+  SFNode   [in,out] metadata          NULL [X3DMetadataObject]
+  MFString [in,out] url               []   [URI]
+  SFBool   []       repeatS           TRUE 
+  SFBool   []       repeatT           TRUE
+  SFNode   []       textureProperties NULL [TextureProperties]
+}
+
+MovieTexture : X3DTexture2DNode, X3DSoundSourceNode, X3DUrlObject { 
+  SFString [in,out] description       ""
+  SFBool   [in,out] loop              FALSE
+  SFNode   [in,out] metadata          NULL  [X3DMetadataObject]
+  SFTime   [in,out] pauseTime         0     (-∞,∞)
+  SFFloat  [in,out] pitch             1.0   (0,∞)
+  SFTime   [in,out] resumeTime        0     (-∞,∞)
+  SFFloat  [in,out] speed             1.0   (-∞,∞)
+  SFTime   [in,out] startTime         0     (-∞,∞)
+  SFTime   [in,out] stopTime          0     (-∞,∞)
+  MFString [in,out] url               []    [URI]
+  SFTime   [out]    duration_changed
+  SFTime   [out]    elapsedTime
+  SFBool   [out]    isActive
+  SFBool   [out]    isPaused
+  SFBool   []       repeatS           TRUE
+  SFBool   []       repeatT           TRUE
+  SFNode   []       textureProperties NULL [TextureProperties]
+}
+
+MultiTexture : X3DTextureNode {
+  SFFloat  [in,out] alpha    1     [0,1]
+  SFColor  [in,out] color    1 1 1 [0,1] 
+  MFString [in,out] function []
+  SFNode   [in,out] metadata NULL  [X3DMetadataObject]
+  MFString [in,out] mode     []
+  MFString [in,out] source   []
+  MFNode   [in,out] texture  []    [X3DTextureNode]
+}
+
+MultiTextureCoordinate : X3DTextureCoordinateNode {
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+  MFNode [in,out] texCoord NULL [X3DTextureCoordinateNode]
+}
+
+MultiTextureTransform : X3DTextureTransformNode { 
+  SFNode [in,out] metadata         NULL [X3DMetadataObject]
+  MFNode [in,out] textureTransform NULL [X3DTextureTransformNode]
+}
+
+PixelTexture : X3DTexture2DNode { 
+  SFImage [in,out] image             0 0 0
+  SFNode  [in,out] metadata          NULL  [X3DMetadataObject]
+  SFBool  []       repeatS           TRUE
+  SFBool  []       repeatT           TRUE
+  SFNode  []       textureProperties NULL  [TextureProperties]
+}
+
+TextureCoordinate : X3DTextureCoordinateNode { 
+  SFNode  [in,out] metadata NULL [X3DMetadataObject]
+  MFVec2f [in,out] point    []   (-∞,∞)
+}
+
+TextureCoordinateGenerator : X3DTextureCoordinateNode {
+  SFNode   [in,out] metadata  NULL     [X3DMetadataObject]
+  SFString [in,out] mode      "SPHERE" [see Table 18.6]
+  MFFloat  [in,out] parameter []       [see Table 18.6]
+}
+
+TextureProperties : X3DNode
+  SFFloat     [in,out] anisotropicDegree   1.0       [1,∞)
+  SFColorRGBA [in,out] borderColor         0 0 0 0   [0,1]
+  SFInt32     [in,out] borderWidth         0         [0,1]
+  SFString    [in,out] boundaryModeS       "REPEAT"  [see Table 18.7]
+  SFString    [in,out] boundaryModeT       "REPEAT"  [see Table 18.7]
+  SFString    [in,out] boundaryModeR       "REPEAT"  [see Table 18.7]
+  SFString    [in,out] magnificationFilter "FASTEST" [see Table 18.8]
+  SFNode      [in,out] metadata            NULL      [X3DMetadataObject]
+  SFString    [in,out] minificationFilter  "FASTEST" [see Table 18.9]
+  SFString    [in,out] textureCompression  "FASTEST" [see Table 18.10]
+  SFFloat     [in,out] texturePriority     0         [0,1]
+  SFBool      []       generateMipMaps     FALSE
+}
+
+TextureTransform : X3DTextureTransformNode { 
+  SFVec2f [in,out] center      0 0  (-∞,∞)
+  SFNode  [in,out] metadata    NULL [X3DMetadataObject]
+  SFFloat [in,out] rotation    0    (-∞,∞)
+  SFVec2f [in,out] scale       1 1  (-∞,∞)
+  SFVec2f [in,out] translation 0 0  (-∞,∞)
+}
+
+ColorInterpolator : X3DInterpolatorNode {
+  SFFloat [in]     set_fraction       (-∞,∞)
+  MFFloat [in,out] key           []   (-∞,∞)
+  MFColor [in,out] keyValue      []   [0,1]
+  SFNode  [in,out] metadata      NULL [X3DMetadataObject]
+  SFColor [out]    value_changed
+}
+
+CoordinateInterpolator : X3DInterpolatorNode {
+  SFFloat [in]     set_fraction       (-∞,∞)
+  MFFloat [in,out] key           []   (-∞,∞)
+  MFVec3f [in,out] keyValue      []   (-∞,∞)
+  SFNode  [in,out] metadata      NULL [X3DMetadataObject]
+  MFVec3f [out]    value_changed
+}
+
+CoordinateInterpolator2D : X3DInterpolatorNode {
+  SFFloat [in]     set_fraction       (-∞,∞)
+  MFFloat [in,out] key           []   (-∞,∞)
+  MFVec2f [in,out] keyValue      []   (-∞,∞)
+  SFNode  [in,out] metadata      NULL [X3DMetadataObject]
+  MFVec2f [out]    value_changed
+}
+
+EaseInEaseOut : X3DNode {
+  SFFloat [in]     set_fraction                  (-∞,∞)
+  MFVec2f [in,out] easeInEaseOut            []   (-∞,∞)
+  MFFloat [in,out] key                      []   (-∞,∞) 
+  SFNode  [in,out] metadata                 NULL [X3DMetadataObject]
+  SFFloat [out]    modifiedFraction_changed
+}
+
+NormalInterpolator : X3DInterpolatorNode {
+  SFFloat [in]     set_fraction       (-∞,∞)
+  MFFloat [in,out] key           []   (-∞,∞)
+  MFVec3f [in,out] keyValue      []   (-∞,∞)
+  SFNode  [in,out] metadata      NULL [X3DMetadataObject]
+  MFVec3f [out]    value_changed
+}
+
+OrientationInterpolator : X3DInterpolatorNode {
+  SFFloat    [in]     set_fraction       (-∞,∞)
+  MFFloat    [in,out] key           []   (-∞,∞)
+  MFRotation [in,out] keyValue      []   [-1,1] or (-∞,∞)
+  SFNode     [in,out] metadata      NULL [X3DMetadataObject]
+  SFRotation [out]    value_changed
+}
+
+PositionInterpolator : X3DInterpolatorNode {
+  SFFloat [in]     set_fraction       (-∞,∞)
+  MFFloat [in,out] key           []   (-∞,∞)
+  MFVec3f [in,out] keyValue      []   (-∞,∞)
+  SFNode  [in,out] metadata      NULL [X3DMetadataObject]
+  SFVec3f [out]    value_changed
+}
+
+PositionInterpolator2D : X3DInterpolatorNode {
+  SFFloat [in]     set_fraction       (-∞,∞)
+  MFFloat [in,out] key           []   (-∞,∞)
+  MFVec2f [in,out] keyValue      []   (-∞,∞)
+  SFNode  [in,out] metadata      NULL [X3DMetadataObject]
+  SFVec2f [out]    value_changed
+}
+
+ScalarInterpolator : X3DInterpolatorNode {
+  SFFloat [in]     set_fraction       (-∞,∞)
+  MFFloat [in,out] key           []   (-∞,∞)
+  MFFloat [in,out] keyValue      []   (-∞,∞)
+  SFNode  [in,out] metadata      NULL [X3DMetadataObject]
+  SFFloat [out]    value_changed
+}
+
+SplinePositionInterpolator : X3DInterpolatorNode {
+  SFFloat [in]     set_fraction            (-∞,∞)
+  SFBool  [in,out] closed            FALSE
+  MFFloat [in,out] key               []    (-∞,∞)
+  MFVec3f [in,out] keyValue          []    (-∞,∞)
+  MFVec3f [in,out] keyVelocity       []    (-∞,∞)
+  SFNode  [in,out] metadata          NULL  [X3DMetadataObject]
+  SFBool  [in,out] normalizeVelocity FALSE
+  SFVec3f [out]    value_changed
+}
+
+SplinePositionInterpolator2D : X3DInterpolatorNode {
+  SFFloat [in]     set_fraction            (-∞,∞)
+  SFBool  [in,out] closed            FALSE
+  MFFloat [in,out] key               []    (-∞,∞)
+  MFVec2f [in,out] keyValue          []    (-∞,∞)
+  MFVec2f [in,out] keyVelocity       []    (-∞,∞)
+  SFNode  [in,out] metadata          NULL  [X3DMetadataObject]
+  SFBool  [in,out] normalizeVelocity FALSE
+  SFVec2f [out]    value_changed
+}
+
+CylinderSensor : X3DDragSensorNode { 
+  SFBool     [in,out] autoOffset         TRUE
+  SFRotation [in,out] axisRotation       0 1 0 0
+  SFString   [in,out] description        ""
+  SFFloat    [in,out] diskAngle          π/12    [0,π/2]
+  SFBool     [in,out] enabled            TRUE
+  SFFloat    [in,out] maxAngle           -1      [-2π,2π]
+  SFNode     [in,out] metadata           NULL    [X3DMetadataObject]
+  SFFloat    [in,out] minAngle           0       [-2π,2π]
+  SFFloat    [in,out] offset             0       (-∞,∞)
+  SFBool     [out]    isActive
+  SFBool     [out]    isOver
+  SFRotation [out]    rotation_changed
+  SFVec3f    [out]    trackPoint_changed
+}
+
+PlaneSensor : X3DDragSensorNode { 
+  SFBool     [in,out] autoOffset          TRUE
+  SFRotation [in,out] axisRotation        0 0 1 0
+  SFString   [in,out] description         ""
+  SFBool     [in,out] enabled             TRUE
+  SFVec2f    [in,out] maxPosition         -1 -1 (-∞,∞)
+  SFNode     [in,out] metadata            NULL  [X3DMetadataObject]
+  SFVec2f    [in,out] minPosition         0 0   (-∞,∞)
+  SFVec3f    [in,out] offset              0 0 0 (-∞,∞)
+  SFBool     [out]    isActive
+  SFBool     [out]    isOver
+  SFVec3f    [out]    trackPoint_changed
+  SFVec3f    [out]    translation_changed
+}
+
+SphereSensor : X3DDragSensorNode { 
+  SFBool     [in,out] autoOffset         TRUE
+  SFString   [in,out] description        ""
+  SFBool     [in,out] enabled            TRUE
+  SFNode     [in,out] metadata           NULL    [X3DMetadataObject]
+  SFRotation [in,out] offset             0 1 0 0 [-1,1],(-∞,∞)
+  SFBool     [out]    isActive
+  SFBool     [out]    isOver
+  SFRotation [out]    rotation_changed
+  SFVec3f    [out]    trackPoint_changed
+}
+
+TouchSensor : X3DTouchSensorNode { 
+  SFString [in,out] description         ""
+  SFBool   [in,out] enabled             TRUE
+  SFNode   [in,out] metadata            NULL [X3DMetadataObject]
+  SFVec3f  [out]    hitNormal_changed
+  SFVec3f  [out]    hitPoint_changed
+  SFVec2f  [out]    hitTexCoord_changed
+  SFBool   [out]    isActive
+  SFBool   [out]    isOver
+  SFTime   [out]    touchTime
+}
+
+KeySensor : X3DKeyDeviceSensorNode {
+  SFBool   [in,out] enabled          TRUE
+  SFNode   [in,out] metadata         NULL [X3DMetadataObject]
+  SFInt32  [out]    actionKeyPress   
+  SFInt32  [out]    actionKeyRelease 
+  SFBool   [out]    altKey           
+  SFBool   [out]    controlKey       
+  SFBool   [out]    isActive         
+  SFString [out]    keyPress         
+  SFString [out]    keyRelease       
+  SFBool   [out]    shiftKey         
+}
+
+StringSensor  : X3DKeyDeviceSensorNode {
+  SFBool   [in,out] deletionAllowed TRUE
+  SFBool   [in,out] enabled         TRUE
+  SFNode   [in,out] metadata        NULL [X3DMetadataObject]
+  SFString [out]    enteredText       
+  SFString [out]    finalText         
+  SFBool   [out]    isActive          
+}
+
+ProximitySensor : X3DEnvironmentalSensorNode {
+  SFVec3f    [in,out] center                   0 0 0 (-∞,∞)
+  SFBool     [in,out] enabled                  TRUE
+  SFNode     [in,out] metadata                 NULL  [X3DMetadataObject]
+  SFVec3f    [in,out] size                     0 0 0 [0,∞)
+  SFTime     [out]    enterTime
+  SFTime     [out]    exitTime
+  SFVec3f    [out]    centerOfRotation_changed
+  SFBool     [out]    isActive
+  SFRotation [out]    orientation_changed
+  SFVec3f    [out]    position_changed
+}
+
+TransformSensor : X3DEnvironmentalSensorNode {
+  SFVec3f    [in,out] center              0 0 0 (-∞,∞)
+  SFBool     [in,out] enabled             TRUE
+  SFNode     [in,out] metadata            NULL  [X3DMetadataObject]
+  SFVec3f    [in,out] size                0 0 0 [0,∞)
+  SFNode     [in,out] targetObject        NULL  [X3DGroupingNode|X3DShapeNode]
+  SFTime     [out]    enterTime
+  SFTime     [out]    exitTime
+  SFBool     [out]    isActive
+  SFRotation [out]    orientation_changed
+  SFVec3f    [out]    position_changed
+}
+
+VisibilitySensor : X3DEnvironmentalSensorNode {
+  SFVec3f [in,out] center    0 0 0 (-∞,∞)
+  SFBool  [in,out] enabled   TRUE
+  SFNode  [in,out] metadata  NULL  [X3DMetadataObject]
+  SFVec3f [in,out] size      0 0 0 [0,∞)
+  SFTime  [out]    enterTime
+  SFTime  [out]    exitTime
+  SFBool  [out]    isActive
+}
+
+Billboard : X3DGroupingNode {
+  MFNode  [in]     addChildren             [X3DChildNode]
+  MFNode  [in]     removeChildren          [X3DChildNode]
+  SFVec3f [in,out] axisOfRotation 0 1 0    (-∞,∞)
+  MFNode  [in,out] children       []       [X3DChildNode]
+  SFNode  [in,out] metadata       NULL     [X3DMetadataObject]
+  SFVec3f []       bboxCenter     0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize       -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+Collision : X3DGroupingNode, X3DSensorNode {
+  MFNode  [in]     addChildren             [X3DChildNode]
+  MFNode  [in]     removeChildren          [X3DChildNode]
+  MFNode  [in,out] children       []       [X3DChildNode]
+  SFBool  [in,out] enabled        TRUE
+  SFNode  [in,out] metadata       NULL     [X3DMetadataObject]
+  SFTime  [out]    collideTime
+  SFBool  [out]    isActive
+  SFVec3f []       bboxCenter     0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize       -1 -1 -1 [0,∞) or −1 −1 −1
+  SFNode  []       proxy          NULL     [X3DChildNode]
+}
+
+LOD : X3DGroupingNode {
+  MFNode  [in]     addChildren               [X3DChildNode]
+  MFNode  [in]     removeChildren            [X3DChildNode]
+  MFNode  [in,out] children         []       [X3DChildNode]
+  SFNode  [in,out] metadata         NULL     [X3DMetadataObject]
+  SFInt32 [out]    level_changed
+  SFVec3f []       bboxCenter       0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize         -1 -1 -1 [0,∞) or −1 −1 −1
+  SFVec3f []       center           0 0 0    (-∞,∞)
+  SFBool  []       forceTransitions FALSE
+  MFFloat []       range            []       [0,∞) or -1 
+}
+
+NavigationInfo : X3DBindableNode {
+  SFBool   [in]     set_bind
+  MFFloat  [in,out] avatarSize      [0.25 1.6 0.75]   [0,∞)
+  SFBool   [in,out] headlight       TRUE
+  SFNode   [in,out] metadata        NULL              [X3DMetadataObject]
+  SFFloat  [in,out] speed           1.0               [0,∞)
+  SFTime   [in,out] transitionTime  1.0               [0, ∞)
+  MFString [in,out] transitionType  ["LINEAR"]        ["TELEPORT","LINEAR",
+                                                       "ANIMATE",...]
+  MFString [in,out] type            ["EXAMINE" "ANY"] ["ANY","WALK","EXAMINE","FLY",
+                                                       "LOOKAT","NONE","EXPLORE",...]
+  SFFloat  [in,out] visibilityLimit 0.0               [0,∞)
+  SFTime   [out]    bindTime
+  SFBool   [out]    isBound
+  SFBool   [out]    transitionComplete
+}
+
+OrthoViewpoint : X3DViewpointNode { 
+  SFBool     [in]     set_bind
+  SFVec3f    [in,out] centerOfRotation  0 0 0         (-∞,∞)
+  SFString   [in,out] description       ""
+  MFFloat    [in,out] fieldOfView       -1, -1, 1, 1  (-∞,∞)
+  SFBool     [in,out] jump              TRUE
+  SFNode     [in,out] metadata          NULL          [X3DMetadataObject]
+  SFRotation [in,out] orientation       0 0 1 0       [-1,1],(-∞,∞)
+  SFVec3f    [in,out] position          0 0 10        (-∞,∞)
+  SFBool     [in,out] retainUserOffsets FALSE
+  SFTime     [out]    bindTime
+  SFBool     [out]    isBound
+}
+
+Viewpoint : X3DViewpointNode { 
+  SFBool     [in]     set_bind
+  SFVec3f    [in,out] centerOfRotation  0 0 0   (-∞,∞)
+  SFString   [in,out] description       ""
+  SFFloat    [in,out] fieldOfView       π/4     (0,π)
+  SFBool     [in,out] jump              TRUE
+  SFNode     [in,out] metadata          NULL    [X3DMetadataObject]
+  SFRotation [in,out] orientation       0 0 1 0 [-1,1],(-∞,∞)
+  SFVec3f    [in,out] position          0 0 10  (-∞,∞)
+  SFBool     [in,out] retainUserOffsets FALSE
+  SFTime     [out]    bindTime
+  SFBool     [out]    isBound
+}
+
+ViewpointGroup : X3DChildNode { 
+  SFVec3f  [in,out] center            0 0 0 (-∞,∞)
+  MFNode   [in,out] children          NULL  [X3DViewpointNode | ViewpointGroup]
+  SFString [in,out] description       ""
+  SFBool   [in,out] displayed         TRUE
+  SFNode   [in,out] metadata          NULL  [X3DMetadataObject]
+  SFBool   [in,out] retainUserOffsets FALSE
+  SFVec3f  [in,out] size              0 0 0 (-∞,∞)
+}
+
+Background : X3DBackgroundNode {
+  SFBool   [in]     set_bind
+  MFFloat  [in,out] groundAngle  []    [0,π/2]
+  MFColor  [in,out] groundColor  []    [0,1]
+  MFString [in,out] backUrl      []    [URI]
+  MFString [in,out] bottomUrl    []    [URI]
+  MFString [in,out] frontUrl     []    [URI]
+  MFString [in,out] leftUrl      []    [URI]
+  SFNode   [in,out] metadata     NULL  [X3DMetadataObject]
+  MFString [in,out] rightUrl     []    [URI]
+  MFString [in,out] topUrl       []    [URI]
+  MFFloat  [in,out] skyAngle     []    [0,π]
+  MFColor  [in,out] skyColor     0 0 0 [0,1]
+  SFFloat  [in,out] transparency 0     [0,1]
+  SFTime   [out]    bindTime
+  SFBool   [out]    isBound
+}
+
+Fog : X3DBindableNode, X3DFogObject {
+  SFBool   [in]     set_bind
+  SFColor  [in,out] color           1 1 1    [0,1]
+  SFString [in,out] fogType         "LINEAR" ["LINEAR"|"EXPONENTIAL"]
+  SFNode   [in,out] metadata        NULL     [X3DMetadataObject]
+  SFFloat  [in,out] visibilityRange 0        [0,∞)
+  SFTime   [out]    bindTime
+  SFBool   [out]    isBound
+}
+
+FogCoordinate : X3DGeometricPropertyNode {
+  MFFloat [in,out] depth    []   [0,1]
+  SFNode  [in,out] metadata NULL [X3DMetadataObject]
+}
+
+LocalFog : X3DChildNode, X3DFogObject {
+  SFColor  [in,out] color           1 1 1    [0,1]
+  SFBool   [in,out] enabled         TRUE
+  SFString [in,out] fogType         "LINEAR" ["LINEAR"|"EXPONENTIAL"]
+  SFNode   [in,out] metadata        NULL     [X3DMetadataObject]
+  SFFloat  [in,out] visibilityRange 0        [0,-∞)
+}
+
+TextureBackground : X3DBackgroundNode {
+  SFBool  [in]     set_bind
+  MFFloat [in,out] groundAngle   []    [0,π/2]
+  MFColor [in,out] groundColor   []    [0,1]
+  SFNode  [in,out] backTexture   NULL  [X3DTexture2DNode,MultiTexture]
+  SFNode  [in,out] bottomTexture NULL  [X3DTexture2DNode,MultiTexture]
+  SFNode  [in,out] frontTexture  NULL  [X3DTexture2DNode,MultiTexture]
+  SFNode  [in,out] leftTexture   NULL  [X3DTexture2DNode,MultiTexture]
+  SFNode  [in,out] metadata      NULL  [X3DMetadataObject]
+  SFNode  [in,out] rightTexture  NULL  [X3DTexture2DNode,MultiTexture]
+  SFNode  [in,out] topTexture    NULL  [X3DTexture2DNode,MultiTexture]
+  MFFloat [in,out] skyAngle      []    [0,π]
+  MFColor [in,out] skyColor      0 0 0 [0,1]
+  SFFloat [in,out] transparency  0     [0,1]
+  SFTime  [out]    bindTime
+  SFBool  [out]    isBound
+}
+
+GeoCoordinate : X3DCoordinateNode {
+  SFNode   [in,out] metadata  NULL        [X3DMetadataObject]
+  MFVec3d  [in,out] point     []          (-∞,∞)
+  SFNode   []       geoOrigin NULL        [GeoOrigin] (deprecated)
+  MFString []       geoSystem ["GD","WE"] [see 25.2.3]  
+}
+
+GeoElevationGrid : X3DGeometryNode {
+  MFDouble [in]     set_height
+  SFNode   [in,out] color           NULL        [X3DColorNode]
+  SFNode   [in,out] metadata        NULL        [X3DMetadataObject]
+  SFNode   [in,out] normal          NULL        [X3DNormalNode]
+  SFNode   [in,out] texCoord        NULL        [X3DTextureCoordinateNode]
+  SFFloat  [in,out] yScale          1.0         [0,∞)
+  SFBool   []       ccw             TRUE
+  SFBool   []       colorPerVertex  TRUE
+  SFDouble []       creaseAngle     0           [0,∞)
+  SFVec3d  []       geoGridOrigin   0 0 0       (-∞,∞)
+  SFNode   []       geoOrigin       NULL        [GeoOrigin] (deprecated)
+  MFString []       geoSystem       ["GD","WE"] [see 25.2.3]
+  MFDouble []       height          [0 0]       (-∞,∞)
+  SFBool   []       normalPerVertex TRUE
+  SFBool   []       solid           TRUE
+  SFInt32  []       xDimension      0           (0,∞)
+  SFDouble []       xSpacing        1.0         [0,∞)
+  SFInt32  []       zDimension      0           (0,∞)
+  SFDouble []       zSpacing        1.0         [0,∞)
+}
+
+GeoLocation : X3DGroupingNode {
+  MFNode   [in]     addChildren                [X3DChildNode]
+  MFNode   [in]     removeChildren             [X3DChildNode]
+  MFNode   [in,out] children       []          [X3DChildNode]
+  SFVec3d  [in,out] geoCoords      0 0 0       (-∞,∞)
+  SFNode   [in,out] metadata       NULL        [X3DMetadataObject]
+  SFNode   []       geoOrigin      NULL        [GeoOrigin] (deprecated)
+  MFString []       geoSystem      ["GD","WE"] [see 25.2.3]
+  SFVec3f  []       bboxCenter     0 0 0       (-∞,∞)
+  SFVec3f  []       bboxSize       -1 -1 -1    [0,∞) or −1 −1 −1
+}
+
+GeoLOD : X3DChildNode, X3DBoundedObject {
+  SFNode   [in,out] metadata       NULL        [X3DMetadataObject]
+  MFNode   [out]    children                   [X3DChildNode]
+  SFInt32  [out]    level_changed
+  SFVec3d  []       center         0 0 0       (-∞,∞)
+  MFString []       child1Url      []          [URI]
+  MFString []       child2Url      []          [URI]
+  MFString []       child3Url      []          [URI]
+  MFString []       child4Url      []          [URI]
+  SFNode   []       geoOrigin      NULL        [GeoOrigin] (deprecated)
+  MFString []       geoSystem      ["GD","WE"] [see 25.2.3]
+  SFFloat  []       range          10          [0,∞)
+  MFString []       rootUrl        []          [URI]
+  MFNode   []       rootNode       []          [X3DChildNode]
+  SFVec3f  []       bboxCenter     0 0 0       (-∞,∞)
+  SFVec3f  []       bboxSize       -1 -1 -1    [0,∞) or −1 −1 −1
+}
+
+GeoMetadata : X3DInfoNode {
+  MFNode   [in,out] data     []
+  SFNode   [in,out] metadata NULL [X3DMetadataObject]
+  MFString [in,out] summary  []
+  MFString [in,out] url      []   [URI]
+}
+
+GeoOrigin : X3DNode {
+  SFVec3d  [in,out] geoCoords 0 0 0       (-∞,∞)
+  SFNode   [in,out] metadata  NULL        [X3DMetadataObject]
+  MFString []       geoSystem ["GD","WE"] [see 25.2.3]
+  SFBool   []       rotateYUp FALSE
+}
+
+GeoPositionInterpolator : X3DInterpolatorNode {
+  SFFloat  [in]     set_fraction                 (-∞,∞)
+  MFFloat  [in,out] key              []          (-∞,∞)
+  MFVec3d  [in,out] keyValue         []
+  SFNode   [in,out] metadata         NULL        [X3DMetadataObject]
+  SFVec3d  [out]    geovalue_changed
+  SFVec3f  [out]    value_changed
+  SFNode   []       geoOrigin        NULL        [GeoOrigin] (deprecated)
+  MFString []       geoSystem        ["GD","WE"] [see 25.2.3]
+}
+
+GeoProximitySensor : X3DEnvironmentalSensorNode {
+  SFBool     [in,out] enabled                  TRUE
+  SFVec3d    [in,out] geoCenter                0 0 0       (-∞,∞) (deprecated as of vs. 3.3)
+  SFVec3d    [in,out] center                   0 0 0       (-∞,∞) (starting with vs. 3.3)
+  SFNode     [in,out] metadata                 NULL        [X3DMetadataObject]
+  SFVec3f    [in,out] size                     0 0 0       [0,∞)
+  SFVec3f    [out]    centerOfRotation_changed
+  SFTime     [out]    enterTime
+  SFTime     [out]    exitTime
+  SFVec3d    [out]    geoCoord_changed
+  SFBool     [out]    isActive
+  SFRotation [out]    orientation_changed
+  SFVec3f    [out]    position_changed
+  SFNode     []       geoOrigin                NULL        [GeoOrigin] (deprecated)
+  MFString   []       geoSystem                ["GD","WE"] [see 25.2.3]
+}
+
+GeoTouchSensor : X3DTouchSensorNode {
+  SFString [in,out] description         ""
+  SFBool   [in,out] enabled             TRUE
+  SFNode   [in,out] metadata            NULL        [X3DMetadataObject]
+  SFVec3f  [out]    hitNormal_changed
+  SFVec3f  [out]    hitPoint_changed
+  SFVec2f  [out]    hitTexCoord_changed
+  SFVec3d  [out]    hitGeoCoord_changed
+  SFBool   [out]    isActive
+  SFBool   [out]    isOver
+  SFTime   [out]    touchTime
+  SFNode   []       geoOrigin           NULL        [GeoOrigin] (deprecated)
+  MFString []       geoSystem           ["GD","WE"] [see 25.2.3]
+}
+
+GeoTransform : X3DGroupingNode {
+  MFNode     [in]     addChildren                  [X3DChildNode]
+  MFNode     [in]     removeChildren               [X3DChildNode]
+  MFNode     [in,out] children         []          [X3DChildNode]
+  SFVec3d    [in,out] geoCenter        0 0 0       (-∞,∞)
+  SFNode     [in,out] metadata         NULL        [X3DMetadataObject]
+  SFRotation [in,out] rotation         0 0 1 0     [-1,1] or (-∞,∞)
+  SFVec3f    [in,out] scale            1 1 1       (0,∞)
+  SFRotation [in,out] scaleOrientation 0 0 1 0     [-1,1] or (-∞,∞)
+  SFVec3f    [in,out] translation      0 0 0       (-∞,∞)
+  SFVec3f    []       bboxCenter       0 0 0       (-∞,∞)
+  SFVec3f    []       bboxSize         -1 -1 -1    [0,∞) or −1 −1 −1
+  SFNode     []       geoOrigin        NULL        [GeoOrigin] (deprecated)
+  MFString   []       geoSystem        ["GD","WE"] [see 25.2.3]
+}
+
+GeoViewpoint : X3DViewpointNode {
+  SFBool     [in]     set_bind
+  SFVec3d    [in,out] centerOfRotation  0 0 0             (-∞,∞)
+  SFString   [in,out] description       ""
+  SFFloat    [in,out] fieldOfView       π/4               (0,π)
+  SFBool     [in,out] jump              TRUE
+  SFNode     [in,out] metadata          NULL              [X3DMetadataObject]
+  SFRotation [in,out] orientation       0 0 1 0           (-∞,∞) or -1 1
+  SFVec3d    [in,out] position          0 0 100000        (-∞,∞)
+  SFBool     [in,out] retainUserOffsets FALSE
+  SFTime     [out]    bindTime
+  SFBool     [out]    isBound
+  SFNode     []       geoOrigin         NULL              [GeoOrigin] (deprecated)
+  MFString   []       geoSystem         ["GD","WE"]       [see 25.2.3]
+  SFFloat    []       speedFactor       1.0               [0,∞)
+}
+
+HAnimDisplacer : X3DGeometricPropertyNode {
+  MFInt32  [in,out] coordIndex    []   [0,∞) or -1
+  MFVec3f  [in,out] displacements []
+  SFNode   [in,out] metadata      NULL [X3DMetadataObject]
+  SFString [in,out] name          ""
+  SFFloat  [in,out] weight        0.0  (-∞,∞)
+}
+
+HAnimHumanoid : X3DChildNode, X3DBoundedObject {
+  SFVec3f    [in,out] center           0 0 0    (-∞,∞)
+  MFString   [in,out] info             []
+  MFNode     [in,out] joints           []       [HAnimJoint]
+  SFNode     [in,out] metadata         NULL     [X3DMetadataObject]
+  SFString   [in,out] name             ""
+  SFRotation [in,out] rotation         0 0 1 0  (-∞,∞)|[-1,1]
+  SFVec3f    [in,out] scale            1 1 1    (0,∞)
+  SFRotation [in,out] scaleOrientation 0 0 1 0  (-∞,∞)|[-1,1]
+  MFNode     [in,out] segments         []       [HAnimSegment]
+  MFNode     [in,out] sites            []       [HAnimSite]
+  MFNode     [in,out] skeleton         []       [HAnimJoint, HAnimSite]
+  MFNode     [in,out] skin             []       [X3DChildNode]
+  SFNode     [in,out] skinCoord        NULL     [X3DCoordinateNode]
+  SFNode     [in,out] skinNormal       NULL     [X3DNormalNode]
+  SFVec3f    [in,out] translation      0 0 0    (-∞,∞)
+  SFString   [in,out] version          ""
+  MFNode     [in,out] viewpoints       []       [HAnimSite]
+  SFVec3f    []       bboxCenter       0 0 0    (-∞,∞)
+  SFVec3f    []       bboxSize         -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+HAnimJoint : X3DGroupingNode {
+  MFNode     [in]     addChildren               [HAnimJoint,HAnimSegment,HAnimSite]
+  MFNode     [in]     removeChildren            [HAnimJoint,HAnimSegment,HAnimSite]
+  SFVec3f    [in,out] center           0 0 0    (-∞,∞)
+  MFNode     [in,out] children         []       [HAnimJoint,HAnimSegment,HAnimSite]
+  MFNode     [in,out] displacers       []       [HAnimDisplacer]
+  SFRotation [in,out] limitOrientation 0 0 1 0  (-∞,∞)|[-1,1]
+  MFFloat    [in,out] llimit           []       (-∞,∞)
+  SFNode     [in,out] metadata         NULL     [X3DMetadataObject]
+  SFString   [in,out] name             ""
+  SFRotation [in,out] rotation         0 0 1 0  (-∞,∞)|[-1,1]
+  SFVec3f    [in,out] scale            1 1 1    (0,∞)
+  SFRotation [in,out] scaleOrientation 0 0 1 0  (-∞,∞)|[-1,1]
+  MFInt32    [in,out] skinCoordIndex   []
+  MFFloat    [in,out] skinCoordWeight  []
+  MFFloat    [in,out] stiffness        [0 0 0]  [0,1]
+  SFVec3f    [in,out] translation      0 0 0    (-∞,∞)
+  MFFloat    [in,out] ulimit           []       (-∞,∞)
+  SFVec3f    []       bboxCenter       0 0 0    (-∞,∞)
+  SFVec3f    []       bboxSize         -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+HAnimSegment : X3DGroupingNode {
+  MFNode   [in]     addChildren                          [X3DChildNode]
+  MFNode   [in]     removeChildren                       [X3DChildNode]
+  SFVec3f  [in,out] centerOfMass     0 0 0               (-∞,∞)
+  MFNode   [in,out] children         []                  [X3DChildNode]
+  SFNode   [in,out] coord            NULL                [X3DCoordinateNode]
+  MFNode   [in,out] displacers       []                  [HAnimDisplacer]
+  SFFloat  [in,out] mass             0                   [0,∞)
+  SFNode   [in,out] metadata         NULL                [X3DMetadataObject]
+  MFFloat  [in,out] momentsOfInertia [0 0 0 0 0 0 0 0 0] [0,∞)
+  SFString [in,out] name             ""
+  SFVec3f  []       bboxCenter       0 0 0               (-∞,∞)
+  SFVec3f  []       bboxSize         -1 -1 -1            [0,∞) or −1 −1 −1
+}
+
+HAnimSite : X3DGroupingNode {
+  MFNode     [in]     addChildren               [X3DChildNode]
+  MFNode     [in]     removeChildren            [X3DChildNode]
+  SFVec3f    [in,out] center           0 0 0    (-∞,∞)
+  MFNode     [in,out] children         []       [X3DChildNode]
+  SFNode     [in,out] metadata         NULL     [X3DMetadataObject]
+  SFString   [in,out] name             ""
+  SFRotation [in,out] rotation         0 0 1 0  (-∞,∞)|[-1,1]
+  SFVec3f    [in,out] scale            1 1 1    (0,∞)
+  SFRotation [in,out] scaleOrientation 0 0 1 0  (-∞,∞)|[-1,1]
+  SFVec3f    [in,out] translation      0 0 0    (-∞,∞)|[-1,1]
+  SFVec3f    []       bboxCenter       0 0 0    (-∞,∞)
+  SFVec3f    []       bboxSize         -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+Contour2D : X3DNode { 
+  MFNode [in]     addChildren         [NurbsCurve2D|ContourPolyline2D]
+  MFNode [in]     removeChildren      [NurbsCurve2D|ContourPolyline2D]
+  MFNode [in,out] children       []   [NurbsCurve2D|ContourPolyline2D]
+  SFNode [in,out] metadata       NULL [X3DMetadataObject]
+}
+
+ContourPolyline2D : X3DNurbsControlCurveNode {
+  SFNode  [in,out] metadata     NULL [X3DMetadataObject]
+  MFVec2d [in,out] controlPoint []   (-∞, ∞)
+}
+
+CoordinateDouble : X3DCoordinateNode { 
+  SFNode  [in,out] metadata NULL [X3DMetadataObject]
+  MFVec3d [in,out] point    []   (-∞,∞)
+}
+
+NurbsCurve : X3DParametricGeometryNode {
+  SFNode   [in,out] controlPoint NULL  [X3DCoordinateNode]
+  SFNode   [in,out] metadata     NULL  [X3DMetadataObject]
+  SFInt32  [in,out] tessellation 0     (-∞,∞)
+  MFDouble [in,out] weight       []    (0,∞)
+  SFBool   []       closed       FALSE 
+  MFDouble []       knot         []    (-∞,∞)
+  SFInt32  []       order        3     [2,∞)
+}
+
+NurbsCurve2D : X3DNurbsControlCurveNode {
+  MFVec2d  [in,out] controlPoint []    (-∞,∞)
+  SFNode   [in,out] metadata     NULL  [X3DMetadataObject]
+  SFInt32  [in,out] tessellation 0     (-∞,∞)
+  MFDouble [in,out] weight       []    (0,∞)
+  SFBool   []       closed       FALSE 
+  MFDouble []       knot         []    (-∞,∞)
+  SFInt32  []       order        3     [2,∞)
+}
+
+NurbsOrientationInterpolator : X3DChildNode { 
+  SFFloat    [in]     set_fraction       (-∞,∞)
+  SFNode     [in,out] controlPoint  NULL [X3DCoordinateNode]
+  MFDouble   [in,out] knot          []   (-∞,∞)  
+  SFNode     [in,out] metadata      NULL [X3DMetadataObject]
+  SFInt32    [in,out] order         3    (2,∞)
+  MFDouble   [in,out] weight        []   (-∞,∞)
+  SFRotation [out]    value_changed
+}
+
+NurbsPatchSurface : X3DNurbsSurfaceGeometryNode { 
+  SFNode   [in,out] controlPoint  NULL  [X3DCoordinateNode]
+  SFNode   [in,out] metadata      NULL  [X3DMetadataObject]
+  SFNode   [in,out] texCoord      NULL  [X3DTextureCoordinateNode|NurbsTextureCoordinate]
+  SFInt32  [in,out] uTessellation 0     (-∞,∞)
+  SFInt32  [in,out] vTessellation 0     (-∞,∞)
+  MFDouble [in,out] weight        []    (0,∞)
+  SFBool   []       solid         TRUE
+  SFBool   []       uClosed       FALSE 
+  SFInt32  []       uDimension    0     [0,∞)
+  MFDouble []       uKnot         []    (-∞,∞)
+  SFInt32  []       uOrder        3     [2,∞)
+  SFBool   []       vClosed       FALSE 
+  SFInt32  []       vDimension    0     [0,∞)
+  MFDouble []       vKnot         []    (-∞,∞)
+  SFInt32  []       vOrder        3     [2,∞)
+}
+
+NurbsPositionInterpolator : X3DChildNode { 
+  SFFloat  [in]     set_fraction       (-∞,∞)
+  SFNode   [in,out] controlPoint  NULL [X3DCoordinateNode]
+  MFDouble [in,out] knot          []   (-∞,∞)  
+  SFNode   [in,out] metadata      NULL [X3DMetadataObject]
+  SFInt32  [in,out] order         3    (2,∞)
+  MFDouble [in,out] weight        []   (-∞,∞)
+  SFVec3f  [out]    value_changed
+}
+
+NurbsSet : X3DChildNode, X3DBoundedObject {
+  MFNode  [in]     addGeometry                [X3DNurbsSurfaceGeometryNode]
+  MFNode  [in]     removeGeometry             [X3DNurbsSurfaceGeometryNode]
+  MFNode  [in,out] geometry          []       [X3DNurbsSurfaceGeometryNode]
+  SFNode  [in,out] metadata          NULL     [X3DMetadataObject]
+  SFFloat [in,out] tessellationScale 1.0      (0,∞)
+  SFVec3f []       bboxCenter        0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize          -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+NurbsSurfaceInterpolator : X3DChildNode { 
+  SFVec2f  [in]     set_fraction          (-∞,∞)
+  SFNode   [in,out] controlPoint     NULL [X3DCoordinateNode]
+  SFNode   [in,out] metadata         NULL [X3DMetadataObject]
+  MFDouble [in,out] weight           []   (-∞,∞)
+  SFVec3f  [out]    position_changed
+  SFVec3f  [out]    normal_changed
+  SFInt32  []       uDimension       0    [0,∞)
+  MFDouble []       uKnot            []   (-∞,∞)
+  SFInt32  []       uOrder           3    [2,∞)
+  SFInt32  []       vDimension       0    [0,∞)
+  MFDouble []       vKnot            []   (-∞,∞)
+  SFInt32  []       vOrder           3    [2,∞)
+}
+
+NurbsSweptSurface : X3DParametricGeometryNode { 
+  SFNode [in,out] crossSectionCurve NULL [X3DNurbsControlCurveNode]
+  SFNode [in,out] metadata          NULL [X3DMetadataObject]
+  SFNode [in,out] trajectoryCurve   NULL [NurbsCurve]
+  SFBool []       ccw               TRUE
+  SFBool []       solid             TRUE
+}
+
+NurbsSwungSurface : X3DParametricGeometryNode { 
+  SFNode [in,out] metadata          NULL [X3DMetadataObject]
+  SFNode [in,out] profileCurve      NULL [X3DNurbsControlCurveNode]
+  SFNode [in,out] trajectoryCurve   NULL [X3DNurbsControlCurveNode]
+  SFBool []       ccw               TRUE
+  SFBool []       solid             TRUE
+}
+
+NurbsTextureCoordinate : X3DNode { 
+  MFVec2f  [in,out] controlPoint []   (-∞,∞)
+  SFNode   [in,out] metadata     NULL [X3DMetadataObject]
+  MFFloat  [in,out] weight       []   (0,∞)
+  SFInt32  []       uDimension   0    [0,∞)
+  MFDouble []       uKnot        []   (-∞,∞)
+  SFInt32  []       uOrder       3    [2,∞)
+  SFInt32  []       vDimension   0    [0,∞)
+  MFDouble []       vKnot        []   (-∞,∞)
+  SFInt32  []       vOrder       3    [2,∞)
+}
+
+NurbsTrimmedSurface : X3DNurbsSurfaceGeometryNode { 
+  MFNode   [in]     addTrimmingContour          [Contour2D]
+  MFNode   [in]     removeTrimmingContour       [Contour2D]
+  SFNode   [in,out] controlPoint          NULL  [X3DCoordinateNode]
+  SFNode   [in,out] metadata              NULL  [X3DMetadataObject]
+  SFNode   [in,out] texCoord              NULL  [X3DTextureCoordinateNode|NurbsTextureCoordinate]
+  MFNode   [in,out] trimmingContour       []    [Contour2D]
+  SFInt32  [in,out] uTessellation         0     (-∞,∞)
+  SFInt32  [in,out] vTessellation         0     (-∞,∞)
+  MFDouble [in,out] weight                []    (0,∞)
+  SFBool   []       solid                 TRUE
+  SFBool   []       uClosed               FALSE 
+  SFInt32  []       uDimension            0     [0,∞)
+  MFDouble []       uKnot                 []    (-∞,∞)
+  SFInt32  []       uOrder                3     [2,∞)
+  SFBool   []       vClosed               FALSE 
+  SFInt32  []       vDimension            0     [0,∞)
+  MFDouble []       vKnot                 []    (-∞,∞)
+  SFInt32  []       vOrder                3     [2,∞)
+}
+
+DISEntityManager : X3DChildNode {
+  SFString [in,out] address         "localhost"
+  SFInt32  [in,out] applicationID   1           [0,65535]
+  MFNode   [in,out] mapping         []          [DISEntityTypeMapping]
+  SFNode   [in,out] metadata        NULL        [X3DMetadataObject]
+  SFInt32  [in,out] port            0           [0,65535]
+  SFInt32  [in,out] siteID          0           [0,65535]
+  MFNode   [out]    addedEntities
+  MFNode   [out]    removedEntities
+}
+
+
+DISEntityTypeMapping : X3DInfoNode,X3DUrlObject {
+  SFNode   [in,out] metadata    NULL [X3DMetadataObject]
+  MFString [in,out] url         []   [URI]
+  SFInt32  []       category    0    [0,255]
+  SFInt32  []       country     0    [0,65535]
+  SFInt32  []       domain      0    [0,255]
+  SFInt32  []       extra       0    [0,255]
+  SFInt32  []       kind        0    [0,255]
+  SFInt32  []       specific    0    [0,255]
+  SFInt32  []       subcategory 0    [0,255]
+}
+
+EspduTransform : X3DGroupingNode, X3DSensorNode { 
+  MFNode     [in]     addChildren
+  MFNode     [in]     removeChildren
+  SFFloat    [in]     set_articulationParameterValue0                         (-∞,∞)
+  SFFloat    [in]     set_articulationParameterValue1                         (-∞,∞)
+  SFFloat    [in]     set_articulationParameterValue2                         (-∞,∞)
+  SFFloat    [in]     set_articulationParameterValue3                         (-∞,∞)
+  SFFloat    [in]     set_articulationParameterValue4                         (-∞,∞)
+  SFFloat    [in]     set_articulationParameterValue5                         (-∞,∞)
+  SFFloat    [in]     set_articulationParameterValue6                         (-∞,∞)
+  SFFloat    [in]     set_articulationParameterValue7                         (-∞,∞)
+  SFString   [in,out] address                                    "localhost"
+  SFInt32    [in,out] applicationID                              1            [0,65535]
+  SFInt32    [in,out] articulationParameterCount                 0            [0,78]
+  MFInt32    [in,out] articulationParameterDesignatorArray       []           [0,255]
+  MFInt32    [in,out] articulationParameterChangeIndicatorArray  []           [0,255]
+  MFInt32    [in,out] articulationParameterIdPartAttachedToArray []           [0,65535]
+  MFInt32    [in,out] articulationParameterTypeArray             []     
+  MFFloat    [in,out] articulationParameterArray                 []           (-∞,∞)
+  SFVec3f    [in,out] center                                     0 0 0        (-∞,∞)
+  MFNode     [in,out] children                                   []
+  SFInt32    [in,out] collisionType                              0            [0,255]
+  SFInt32    [in,out] deadReckoning                              0            [0,255]
+  SFVec3f    [in,out] detonationLocation                         0 0 0        (-∞,∞)
+  SFVec3f    [in,out] detonationRelativeLocation                 0 0 0        (-∞,∞)
+  SFInt32    [in,out] detonationResult                           0            [0,255]
+  SFBool     [in,out] enabled                                    TRUE
+  SFInt32    [in,out] entityCategory                             0            [0,255]
+  SFInt32    [in,out] entityCountry                              0            [0,65535]
+  SFInt32    [in,out] entityDomain                               0            [0,255]
+  SFInt32    [in,out] entityExtra                                0            [0,255]
+  SFInt32    [in,out] entityID                                   0            [0,65535]
+  SFInt32    [in,out] entityKind                                 0            [0,255]
+  SFInt32    [in,out] entitySpecific                             0            [0,255]
+  SFInt32    [in,out] entitySubCategory                          0            [0,255]
+  SFInt32    [in,out] eventApplicationID                         1            [0,65535]
+  SFInt32    [in,out] eventEntityID                              0            [0,65535]
+  SFInt32    [in,out] eventNumber                                0            [0,65355]
+  SFInt32    [in,out] eventSiteID                                0            [0,65535]
+  SFBool     [in,out] fired1                                     FALSE
+  SFBool     [in,out] fired2                                     FALSE
+  SFInt32    [in,out] fireMissionIndex                           0            [0,65535]
+  SFFloat    [in,out] firingRange                                0.0          (0,∞)
+  SFInt32    [in,out] firingRate                                 0            [0,65535]
+  SFInt32    [in,out] forceID                                    0            [0,255]
+  SFInt32    [in,out] fuse                                       0            [0,65535]
+  SFVec3d    [in,out] geoCoords                                  0 0 0        (-∞,∞)
+  SFVec3f    [in,out] linearVelocity                             0 0 0        (-∞,∞)
+  SFVec3f    [in,out] linearAcceleration                         0 0 0        (-∞,∞)
+  SFString   [in,out] marking                                    ""
+  SFNode     [in,out] metadata                                   NULL         [X3DMetadataObject]
+  SFString   [in,out] multicastRelayHost                         ""
+  SFInt32    [in,out] multicastRelayPort                         0             
+  SFInt32    [in,out] munitionApplicationID                      1            [0,65535]
+  SFVec3f    [in,out] munitionEndPoint                           0 0 0        (-∞,∞)
+  SFInt32    [in,out] munitionEntityID                           0            [0,65535]
+  SFInt32    [in,out] munitionQuantity                           0            [0,65535]
+  SFInt32    [in,out] munitionSiteID                             0            [0,65535]
+  SFVec3f    [in,out] munitionStartPoint                         0 0 0        (-∞,∞)
+  SFString   [in,out] networkMode                                "standAlone" ["standAlone"|
+                                                                               "networkReader"|
+                                                                               "networkWriter"]
+  SFInt32    [in,out] port                                       0            [0,65535]
+  SFTime     [in,out] readInterval                               0.1          [0,∞)
+  SFRotation [in,out] rotation                                   0 0 1 0      (-∞,∞)|[-1,1]
+  SFVec3f    [in,out] scale                                      1 1 1        (-∞,∞)
+  SFRotation [in,out] scaleOrientation                           0 0 1 0      (-∞,∞)|[-1,1]
+  SFInt32    [in,out] siteID                                     0            [0,65535]
+  SFVec3f    [in,out] translation                                0 0 0        (-∞,∞)
+  SFInt32    [in,out] warhead                                    0            [0,65535]
+  SFTime     [in,out] writeInterval                              1.0          [0,∞)
+  SFFloat    [out]    articulationParameterValue0_changed        0.0          (-∞,∞)
+  SFFloat    [out]    articulationParameterValue1_changed        0.0          (-∞,∞)
+  SFFloat    [out]    articulationParameterValue2_changed        0.0          (-∞,∞)
+  SFFloat    [out]    articulationParameterValue3_changed        0.0          (-∞,∞)
+  SFFloat    [out]    articulationParameterValue4_changed        0.0          (-∞,∞)
+  SFFloat    [out]    articulationParameterValue5_changed        0.0          (-∞,∞)
+  SFFloat    [out]    articulationParameterValue6_changed        0.0          (-∞,∞)
+  SFFloat    [out]    articulationParameterValue7_changed        0.0          (-∞,∞)
+  SFTime     [out]    collideTime                                0            [0,∞)
+  SFTime     [out]    detonateTime                               0            [0,∞)
+  SFTime     [out]    firedTime                                  0            [0,∞)
+  SFBool     [out]    isActive                                   FALSE
+  SFBool     [out]    isCollided                                 FALSE                     
+  SFBool     [out]    isDetonated                                FALSE                    
+  SFBool     [out]    isNetworkReader                            FALSE
+  SFBool     [out]    isNetworkWriter                            FALSE
+  SFBool     [out]    isRtpHeaderHeard                           FALSE
+  SFBool     [out]    isStandAlone                               FALSE
+  SFTime     [out]    timestamp                                  0            [0,∞)
+  SFVec3f    []       bboxCenter                                 0 0 0        (-∞,∞)
+  SFVec3f    []       bboxSize                                   -1 -1 -1     [0,∞) or −1 −1 −1
+  MFString   []       geoSystem                                  ["GD","WE"]  [see 25.2.3]
+  SFBool     []       rtpHeaderExpected                          FALSE
+}
+
+ReceiverPdu : X3DNetworkSensorNode, X3DBoundedObject {
+  SFString [in,out] address                  "localhost"
+  SFInt32  [in,out] applicationID            1            [0,65535]
+  SFBool   [in,out] enabled                  TRUE
+  SFInt32  [in,out] entityID                 0            [0,65535]
+  SFVec3d  [in,out] geoCoords                0 0 0        (-∞,∞)
+  SFNode   [in,out] metadata                 NULL         [X3DMetadataObject]
+  SFString [in,out] multicastRelayHost       ""
+  SFInt32  [in,out] multicastRelayPort       0     
+  SFString [in,out] networkMode              "standAlone" ["standAlone"|
+                                                           "networkReader"|
+                                                           "networkWriter"]
+  SFInt32  [in,out] port                     0            [0,65535]
+  SFInt32  [in,out] radioID                  0            [0,65535]
+  SFFloat  [in,out] readInterval             0.1          [0,∞)
+  SFFloat  [in,out] receivedPower            0.0          [0,∞)
+  SFInt32  [in,out] receiverState            0            [0,65535]
+  SFBool   [in,out] rtpHeaderExpected        FALSE
+  SFInt32  [in,out] siteID                   0            [0,65535]
+  SFInt32  [in,out] transmitterApplicationID 1            [0,65535]
+  SFInt32  [in,out] transmitterEntityID      0            [0,65535]
+  SFInt32  [in,out] transmitterRadioID       0            [0,65535]
+  SFInt32  [in,out] transmitterSiteID        0            [0,65535]           
+  SFInt32  [in,out] whichGeometry            1            [-1,∞)
+  SFFloat  [in,out] writeInterval            1.0          [0,∞)
+  SFBool   [out]    isActive                 FALSE
+  SFBool   [out]    isNetworkReader          FALSE
+  SFBool   [out]    isNetworkWriter          FALSE
+  SFBool   [out]    isRtpHeaderHeard         FALSE
+  SFBool   [out]    isStandAlone             FALSE
+  SFTime   [out]    timestamp                0
+  SFVec3f  []       bboxCenter               0 0 0        (-∞,∞)
+  SFVec3f  []       bboxSize                 -1 -1 -1     [0,∞) [0,∞) [0,∞) or −1 −1 −1
+  MFString []       geoSystem                ["GD","WE"]  [see 25.2.3]
+}
+
+SignalPdu : X3DNetworkSensorNode, X3DBoundedObject {
+  SFString [in,out] address            "localhost"
+  SFInt32  [in,out] applicationID      1            [0,65535]
+  MFInt32  [in,out] data               []           [0,255]                  
+  SFInt32  [in,out] dataLength         0            [0,65535]
+  SFBool   [in,out] enabled            TRUE
+  SFInt32  [in,out] encodingScheme     0            [0,65535]
+  SFInt32  [in,out] entityID           0            [0,65535]
+  SFVec3d  [in,out] geoCoords          0 0 0        (-∞,∞)
+  SFNode   [in,out] metadata           NULL         [X3DMetadataObject]
+  SFString [in,out] multicastRelayHost ""
+  SFInt32  [in,out] multicastRelayPort 0           
+  SFString [in,out] networkMode        "standAlone" ["standAlone"|
+                                                     "networkReader"|
+                                                     "networkWriter"]
+  SFInt32  [in,out] port               0            [0,65535]
+  SFInt32  [in,out] radioID            0            [0,65535]
+  SFFloat  [in,out] readInterval       0.1          [0,∞)
+  SFBool   [in,out] rtpHeaderExpected  FALSE
+  SFInt32  [in,out] sampleRate         0            [0,65535]
+  SFInt32  [in,out] samples            0            [0,65535]
+  SFInt32  [in,out] siteID             0            [0,65535]
+  SFInt32  [in,out] tdlType            0            [0,65535]
+  SFInt32  [in,out] whichGeometry      1            [-1,∞)
+  SFFloat  [in,out] writeInterval      1.0          [0,∞)
+  SFBool   [out]    isActive
+  SFBool   [out]    isNetworkReader
+  SFBool   [out]    isNetworkWriter
+  SFBool   [out]    isRtpHeaderHeard
+  SFBool   [out]    isStandAlone
+  SFTime   [out]    timestamp
+  SFVec3f  []       bboxCenter         0 0 0        (-∞,∞)
+  SFVec3f  []       bboxSize           -1 -1 -1     [0,∞) or −1 −1 −1
+  MFString []       geoSystem          ["GD","WE"]  [see 25.2.3]
+}
+
+TransmitterPdu : X3DNetworkSensorNode, X3DBoundedObject { 
+  SFString [in,out] address                            "localhost"
+  SFVec3f  [in,out] antennaLocation                    0 0 0        (-∞,∞)
+  SFInt32  [in,out] antennaPatternLength               0            [0,65535]
+  SFInt32  [in,out] antennaPatternType                 0            [0,65535]
+  SFInt32  [in,out] applicationID                      1            [0,65535]
+  SFInt32  [in,out] cryptoKeyID                        0            [0,65535]           
+  SFInt32  [in,out] cryptoSystem                       0            [0,65535]
+  SFBool   [in,out] enabled                            TRUE
+  SFInt32  [in,out] entityID                           0            [0,65535]
+  SFInt32  [in,out] frequency                          0      
+  SFVec3d  [in,out] geoCoords                          0 0 0        (-∞,∞)
+  SFInt32  [in,out] inputSource                        0            [0,255]
+  SFInt32  [in,out] lengthOfModulationParameters       0            [0,255]
+  SFNode   [in,out] metadata                           NULL         [X3DMetadataObject]
+  SFInt32  [in,out] modulationTypeDetail               0            [0,65535]
+  SFInt32  [in,out] modulationTypeMajor                0            [0,65535]
+  SFInt32  [in,out] modulationTypeSpreadSpectrum       0            [0,65535]
+  SFInt32  [in,out] modulationTypeSystem               0            [0,65535]
+  SFString [in,out] multicastRelayHost                 ""
+  SFInt32  [in,out] multicastRelayPort                 0           
+  SFString [in,out] networkMode                        "standAlone" ["standAlone"|
+                                                                     "networkReader"|
+                                                                     "networkWriter"]
+  SFInt32  [in,out] port                               0            [0,65535]
+  SFFloat  [in,out] power                              0.0          [0,∞)
+  SFInt32  [in,out] radioEntityTypeCategory            0            [0,255]
+  SFInt32  [in,out] radioEntityTypeCountry             0            [0,65535]
+  SFInt32  [in,out] radioEntityTypeDomain              0            [0,255]
+  SFInt32  [in,out] radioEntityTypeKind                0            [0,255]
+  SFInt32  [in,out] radioEntityTypeNomenclature        0            [0,255]
+  SFInt32  [in,out] radioEntityTypeNomenclatureVersion 0            [0,65535]
+  SFInt32  [in,out] radioID                            0            [0,255]
+  SFFloat  [in,out] readInterval                       0.1          [0,∞)
+  SFVec3f  [in,out] relativeAntennaLocation            0 0 0        (-∞,∞)
+  SFBool   [in,out] rtpHeaderExpected                  FALSE
+  SFInt32  [in,out] siteID                             0            [0,65535]
+  SFFloat  [in,out] transmitFrequencyBandwidth         0.0          (-∞,∞)
+  SFInt32  [in,out] transmitState                      0            [0,255]
+  SFInt32  [in,out] whichGeometry                      1            [-1,∞)
+  SFFloat  [in,out] writeInterval                      1.0          [0,∞)
+  SFBool   [out]    isActive                           FALSE
+  SFBool   [out]    isNetworkReader                    FALSE
+  SFBool   [out]    isNetworkWriter                    FALSE
+  SFBool   [out]    isRtpHeaderHeard                   FALSE
+  SFBool   [out]    isStandAlone                       FALSE
+  SFTime   [out]    timestamp                          0
+  SFVec3f  []       bboxCenter                         0 0 0        (-∞,∞)
+  SFVec3f  []       bboxSize                           -1 -1 -1     [0,∞) [0,∞) [0,∞) or −1 −1 −1
+  MFString []       geoSystem                          ["GD","WE"]  [see 25.2.3]
+}
+
+Script : X3DScriptNode {
+  SFNode    [in,out] metadata     NULL  [X3DMetadataObject]
+  MFString  [in,out] url          []    [URI]
+  SFBool    []       directOutput FALSE
+  SFBool    []       mustEvaluate FALSE
+  # And any number of:
+  fieldType [in]     fieldName
+  fieldType [in,out] fieldName    initialValue
+  fieldType [out]    fieldName
+  fieldType []       fieldName    initialValue
+}
+
+BooleanFilter : X3DChildNode {
+  SFBool [in]     set_boolean
+  SFNode [in,out] metadata    NULL [X3DMetadataObject]
+  SFBool [out]    inputFalse
+  SFBool [out]    inputNegate
+  SFBool [out]    inputTrue
+}
+
+BooleanSequencer : X3DSequencerNode {
+  SFBool  [in]     next
+  SFBool  [in]     previous
+  SFFloat [in]     set_fraction
+  MFFloat [in,out] key           []   (-∞,∞) 
+  MFBool  [in,out] keyValue 	 [] 
+  SFNode  [in,out] metadata      NULL [X3DMetadataObject]
+  SFBool  [out]    value_changed
+}
+BooleanToggle : X3DChildNode {
+  SFBool [in]     set_boolean
+  SFNode [in,out] metadata    NULL  [X3DMetadataObject]
+  SFBool [in,out] toggle      FALSE 
+}
+BooleanTrigger : X3DTriggerNode {
+  SFTime [in]     set_triggerTime
+  SFNode [in,out] metadata        NULL [X3DMetadataObject]
+  SFBool [out]    triggerTrue 
+}
+IntegerSequencer : X3DSequencerNode {
+  SFBool  [in]     next
+  SFBool  [in]     previous
+  SFFloat [in]     set_fraction
+  MFFloat [in,out] key           []   (-∞,∞) 
+  MFInt32 [in,out] keyValue      []   (-∞,∞)
+  SFNode  [in,out] metadata      NULL [X3DMetadataObject]
+  SFInt32 [out]    value_changed
+}
+IntegerTrigger : X3DTriggerNode {
+  SFBool  [in]     set_boolean
+  SFInt32 [in,out] integerKey   -1   (-∞,∞)
+  SFNode  [in,out] metadata     NULL [X3DMetadataObject]
+  SFInt32 [out]    triggerValue  
+}
+TimeTrigger : X3DTriggerNode {
+  SFBool [in]     set_boolean
+  SFNode [in,out] metadata    NULL [X3DMetadataObject]
+  SFTime [ot]    triggerTime
+}
+
+ComposedShader : X3DShaderNode, X3DProgrammableShaderObject {
+  SFBool    [in]     activate
+  SFNode    [in,out] metadata   NULL [X3DMetadataObject]
+  MFNode    [in,out] parts      []   [ShaderPart]
+  SFBool    [out]    isSelected
+  SFBool    [out]    isValid
+  SFString []        language   ""   ["Cg"|"GLSL"|"HLSL"|...]
+
+  # And any number of:
+  fieldType []       fieldName
+  fieldType [in]     fieldName
+  fieldType [out]    fieldName
+  fieldType [in,out] fieldName
+}
+
+FloatVertexAttribute : X3DVertexAttributeNode {
+  SFNode   [in,out] metadata      NULL [X3DMetadataObject]
+  MFFloat  [in,out] value  		  []   (-∞,∞)
+  SFString []       name          ""
+  SFInt32  []       numComponents 4    [1..4]
+}
+
+Matrix3VertexAttribute : X3DVertexAttributeNode {
+  SFNode     [in,out] metadata NULL [X3DMetadataObject]
+  MFMatrix3f [in,out] value    []   (-∞,∞)
+  SFString   []       name     ""
+}
+
+Matrix4VertexAttribute : X3DVertexAttributeNode {
+  SFNode     [in,out] metadata NULL [X3DMetadataObject]
+  MFMatrix4f [in,out] value    []   (-∞,∞)
+  SFString   []       name     ""
+}
+
+PackagedShader : X3DShaderNode, X3DUrlObject, X3DProgrammableShaderObject {
+  SFBool    [in]     activate
+  SFNode    [in,out] metadata   NULL [X3DMetadataObject]
+  MFString  [in,out] url        []   [URI]
+  SFBool    [out]    isSelected
+  SFBool    [out]    isValid
+  SFString []        language   ""   ["Cg"|"GLSL"|"HLSL"|...]
+
+  # And any number of:
+  fieldType [in]     fieldName
+  fieldType [in,out] fieldName initialValue
+  fieldType [out]    fieldName
+  fieldType []       fieldName initialValue
+}
+ProgramShader : X3DShaderNode {
+  SFBool   [in]     activate
+  SFNode   [in,out] metadata   NULL [X3DMetadataObject]
+  MFNode   [in,out] programs   []   [ShaderProgram]
+  SFBool   [out]    isSelected
+  SFBool   [out]    isValid
+  SFString []       language   ""   ["Cg"|"GLSL"|"HLSL"|...]
+}
+
+ShaderPart : X3DNode, X3DUrlObject {
+  SFNode   [in,out] metadata NULL       [X3DMetadataObject]
+  MFString [in,out] url      []         [URI]
+  SFString []       type     "VERTEX"   ["VERTEX"|"FRAGMENT"]
+}
+ShaderProgram : X3DNode, X3DUrlObject, X3DProgrammableShaderObject {
+  SFNode    [in,out] metadata  NULL         [X3DMetadataObject]
+  MFString  [in,out] url       []           [URI]
+  SFString  []       type      "VERTEX"     ["VERTEX"|"FRAGMENT"]
+
+  # And any number of:
+  fieldType [in]     fieldName
+  fieldType [in,out] fieldName initialValue
+  fieldType [out]    fieldName
+  fieldType []       fieldName initialValue
+}
+
+CADAssembly : X3DGroupingNode, X3DProductStructureChildNode {
+  MFNode   [in]     addChildren
+  MFNode   [in]     removeChildren
+  MFNode   [in,out] children       []       [X3DProductStructureChildNode, X3DGroupingNode]
+  SFNode   [in,out] metadata       NULL     [X3DMetadataObject]
+  SFString [in,out] name           ""
+  SFVec3f  []       bboxCenter     0 0 0    (-∞,∞)
+  SFVec3f  []       bboxSize       -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+CADFace : X3DProductStructureChildNode, X3DBoundedObject {
+  SFNode   [in,out] metadata   NULL     [X3DMetadataObject]
+  SFString [in,out] name       ""
+  SFNode   [in,out] shape      NULL     [X3DShapeNode, LOD, Transform]
+  SFVec3f  []       bboxCenter 0 0 0    (-∞, ∞)
+  SFVec3f  []       bboxSize   -1 -1 -1 [0, ∞) or -1 -1 -1
+}
+
+CADLayer : X3DGroupingNode {
+  MFNode   [in]     addChildren
+  MFNode   [in]     removeChildren
+  MFNode   [in,out] children       []       [X3DChildNode]
+  SFNode   [in,out] metadata       NULL     [X3DMetadataObject]
+  SFString [in,out] name           ""
+  MFBool   [in,out] visible        []
+  SFVec3f  []       bboxCenter     0 0 0    (-∞,∞)
+  SFVec3f  []       bboxSize       -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+CADPart : X3DGroupingNode, X3DProductStructureChildNode {
+  MFNode     [in]     addChildren
+  MFNode     [in]     removeChildren
+  SFVec3f    [in,out] center           0 0 0    (-∞,∞)
+  MFNode     [in,out] children         []       [CADFace]
+  SFNode     [in,out] metadata         NULL     [X3DMetadataObject]
+  SFString   [in,out] name             ""
+  SFRotation [in,out] rotation         0 0 1 0  [-1,1] or (-∞,∞)
+  SFVec3f    [in,out] scale            1 1 1    (0,∞)
+  SFRotation [in,out] scaleOrientation 0 0 1 0  [-1,1] or (-∞,∞)
+  SFVec3f    [in,out] translation      0 0 0    (-∞,∞)
+  SFVec3f    []       bboxCenter       0 0 0    (-∞,∞)
+  SFVec3f    []       bboxSize         -1 -1 -1 [0,∞) or −1 −1 −1
+}
+
+IndexedQuadSet : X3DComposedGeometryNode {
+  MFInt32 [in]     set_index       []   [0,∞)
+  MFNode  [in,out] attrib          []   [X3DVertexAttributeNode]
+  SFNode  [in,out] color           NULL [X3DColorNode]
+  SFNode  [in,out] coord           NULL [X3DCoordinateNode]
+  SFNode  [in,out] fogCoord        NULL [FogCoordinate]
+  SFNode  [in,out] metadata        NULL [X3DMetadataObject]
+  SFNode  [in,out] normal          NULL [X3DNormalNode]
+  SFNode  [in,out] texCoord        NULL [X3DTextureCoordinateNode]
+  SFBool  []       ccw             TRUE
+  SFBool  []       colorPerVertex  TRUE
+  SFBool  []       normalPerVertex TRUE
+  SFBool  []       solid           TRUE
+  MFInt32 []       index           []   [0,∞)
+}
+
+QuadSet : X3DComposedGeometryNode {
+  MFNode  [in,out] attrib          []   [X3DVertexAttributeNode]
+  SFNode  [in,out] color           NULL [X3DColorNode]
+  SFNode  [in,out] coord           NULL [X3DCoordinateNode]
+  SFNode  [in,out] fogCoord        NULL [FogCoordinate]
+  SFNode  [in,out] metadata        NULL [X3DMetadataObject]
+  SFNode  [in,out] normal          NULL [X3DNormalNode]
+  SFNode  [in,out] texCoord        NULL [X3DTextureCoordinateNode]
+  SFBool  []       ccw             TRUE
+  SFBool  []       colorPerVertex  TRUE
+  SFBool  []       normalPerVertex TRUE
+  SFBool  []       solid           TRUE
+}
+
+ComposedTexture3D : X3DTexture3DNode {
+  SFNode [in,out] metadata          NULL  [X3DMetadataObject]
+  MFNode [in,out] texture           []    [X3DTexture2DNode]
+  SFNode []       textureProperties NULL  [TextureProperties]
+  SFBool []       repeatS           FALSE
+  SFBool []       repeatR           FALSE
+  SFBool []       repeatT           FALSE
+}
+
+ImageTexture3D : X3DTexture3DNode, X3DUrlObject {
+  SFNode   [in,out] metadata          NULL  [X3DMetadataObject]
+  MFString [in,out] url               []    [URI]
+  SFBool   []       repeatS           FALSE
+  SFBool   []       repeatT           FALSE
+  SFBool   []       repeatR           FALSE
+  SFNode   []       textureProperties NULL  [TextureProperties]
+}
+
+PixelTexture3D : X3DTexture3DNode {
+  SFNode  [in,out] metadata          NULL      [X3DMetadataObject]
+  MFInt32 [in,out] image             [0 0 0 0]
+  SFBool  []       repeatS           FALSE
+  SFBool  []       repeatR           FALSE
+  SFBool  []       repeatT           FALSE
+  SFNode  []       textureProperties NULL      [TextureProperties]
+}
+
+TextureCoordinate3D : X3DTextureCoordinateNode {
+  SFNode  [in,out] metadata NULL [X3DMetadataObject]
+  MFVec3f [in,out] point    []   (-∞,∞)
+}
+
+TextureCoordinate4D : X3DTextureCoordinateNode {
+  SFNode  [in,out] metadata NULL [X3DMetadataObject]
+  MFVec4f [in,out] point    []   (-∞,∞)
+}
+
+TextureTransformMatrix3D : X3DTextureTransformNode {
+  SFNode     [in,out] metadata    NULL    [X3DMetadataObject]
+  SFMatrix4f [in,out] matrix      1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1  (-∞,∞)
+}
+
+TextureTransform3D : X3DTextureTransformNode {
+  SFVec3f    [in,out] center      0 0 0   (-∞,∞)
+  SFNode     [in,out] metadata    NULL    [X3DMetadataObject]
+  SFRotation [in,out] rotation    0 0 1 0 (-∞,∞)
+  SFVec3f    [in,out] scale       1 1 1   (-∞,∞)
+  SFVec3f    [in,out] translation 0 0 0   (-∞,∞)
+}
+
+ComposedCubeMapTexture : X3DEnvironmentTextureNode {
+  SFNode [in,out] back     NULL [X3DTexture2DNode]
+  SFNode [in,out] bottom   NULL [X3DTexture2DNode]
+  SFNode [in,out] front    NULL [X3DTexture2DNode]
+  SFNode [in,out] left     NULL [X3DTexture2DNode]
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+  SFNode [in,out] right    NULL [X3DTexture2DNode]
+  SFNode [in,out] top      NULL [X3DTexture2DNode]
+}
+
+GeneratedCubeMapTexture : X3DEnvironmentTextureNode {
+  SFNode   [in,out] metadata          NULL   [X3DMetadataObject]
+  SFString [in,out] update            "NONE" ["NONE"|"NEXT_FRAME_ONLY"|"ALWAYS"]
+  SFInt32  []       size              128    (0,∞)
+  SFNode   []       textureProperties NULL   [TextureProperties]
+}
+
+ImageCubeMapTexture : X3DEnvironmentTextureNode, X3DUrlObject {
+  SFNode   [in,out] metadata          NULL [X3DMetadataObject]
+  MFString [in,out] url               []   [URI]
+  SFNode   []       textureProperties NULL [TextureProperties]
+}
+
+Layer : X3DLayerNode { 
+  MFNode [in]     addChildren          [X3DChildNode]
+  MFNode [in]     removeChildren       [X3DChildNode]
+  MFNode [in,out] children       []    [X3DChildNode]
+  SFBool [in,out] isPickable     TRUE
+  SFNode [in,out] metadata       NULL  [X3DMetadataObject]
+  SFNode [in,out] viewport       NULL  [X3DViewportNode]
+}
+
+LayerSet : X3DNode { 
+  SFInt32 [in,out]  activeLayer 0    (0,∞)
+  MFNode  [in,out]  layers      []   [X3DLayerNode]
+  SFNode  [in,out]  metadata    NULL [X3DMetadataObject]
+  MFInt32 [in,out]  order       [0]   (0,∞)
+}
+
+Viewport : X3DViewportNode, X3DBoundedObject {
+  MFNode  [in]     addChildren             [X3DChildNode]
+  MFNode  [in]     removeChildren          [X3DChildNode]
+  MFNode  [in,out] children       []       [X3DChildNode]
+  MFFloat [in,out] clipBoundary   0 1 0 1  [0,1]
+  SFNode  [in,out] metadata       NULL     [X3DMetadataObject]
+  SFVec3f []       bboxCenter     0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize       -1 -1 -1 (0,∞) or -1 -1 -1
+}
+
+Layout : X3DLayoutNode { 
+   MFString [in,out] align       ["CENTER","CENTER"] ["LEFT"|"CENTER"|"RIGHT"&
+                                                      "BOTTOM"|"CENTER"|"TOP"]
+   SFNode   [in,out] metadata    NULL                [X3DMetadataObject]
+   MFFloat  [in,out] offset      [0,0]               (-∞,∞)
+   MFString [in,out] offsetUnits ["WORLD","WORLD"]   ["WORLD","FRACTION","PIXEL"]
+   MFString [in,out] scaleMode   ["NONE","NONE"]     ["NONE","FRACTION","STRETCH","PIXEL"]
+   MFFloat  [in,out] size        [1,1]               (0,∞)
+   MFString [in,out] sizeUnits   ["WORLD","WORLD"]   ["WORLD","FRACTION","PIXEL"]
+}
+
+LayoutGroup : X3DGroupingNode {
+   MFNode  [in]     addChildren          [X3DChildNode]
+   MFNode  [in]     removeChildren       [X3DChildNode]
+   MFNode  [in,out] children       []    [X3DChildNode]
+   SFNode  [in,out] layout         NULL  [X3DLayoutNode]
+   SFNode  [in,out] metadata       NULL  [X3DMetadataObject]
+   SFNode  [in,out] viewport       NULL  [X3DViewportNode]
+   SFVec3f []       bboxCenter     0 0 0 (-∞,∞)
+   SFVec3f []       bboxSize       0 0 0 (-∞,∞)
+}
+
+LayoutLayer : X3DLayerNode { 
+  MFNode [in]     addChildren         [X3DChildNode]
+  MFNode [in]     removeChildren      [X3DChildNode]
+  MFNode [in,out] children       []   [X3DChildNode]
+  SFBool [in,out] isPickable     TRUE
+  SFNode [in,out] layout         NULL [X3DLayoutNode]
+  SFNode [in,out] metadata       NULL [X3DMetadataObject]
+  SFNode [in,out] viewport       NULL [X3DViewportNode]
+}
+
+ScreenFontStyle : X3DFontStyleNode {
+  SFNode   [in,out] metadata    NULL    [X3DMetadataObject]
+  MFString []       family      "SERIF"
+  SFBool   []       horizontal  TRUE
+  MFString []       justify     "BEGIN" ["BEGIN","END","FIRST","MIDDLE",""]
+  SFString []       language    ""
+  SFBool   []       leftToRight TRUE
+  SFFloat  []       pointSize   12.0    (0,∞)
+  SFFloat  []       spacing     1.0     [0,∞)
+  SFString []       style       "PLAIN" ["PLAIN"|"BOLD"|"ITALIC"|"BOLDITALIC"|""]
+  SFBool   []       topToBottom TRUE
+}
+
+ScreenGroup : X3DGroupingNode {
+  MFNode  [in]     addChildren             [X3DChildNode]
+  MFNode  [in]     removeChildren          [X3DChildNode]
+  MFNode  [in,out] children       []       [X3DChildNode]
+  SFNode  [in,out] metadata       NULL     [X3DMetadataObject]
+  SFVec3f []       bboxCenter     0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize       -1 -1 -1 (0,∞) or -1 -1 -1
+}
+
+BallJoint : X3DRigidJointNode {
+  SFVec3f  [in,out] anchorPoint      0 0 0
+  SFNode   [in,out] body1            NULL   [RigidBody]
+  SFNode   [in,out] body2            NULL   [RigidBody]
+  MFString [in,out] forceOutput      "NONE" ["ALL","NONE",...]
+  SFNode   [in,out] metadata         NULL   [X3DMetadataObject]
+  SFVec3f  [out]    body1AnchorPoint
+  SFVec3f  [out]    body2AnchorPoint
+}
+
+CollidableOffset : X3DNBodyCollidableNode {
+  SFBool     [in,out] enabled     TRUE
+  SFNode     [in,out] metadata    NULL     [X3DMetadataObject]
+  SFRotation [in,out] rotation    0 0 1 0  [0,1]
+  SFVec3f    [in,out] translation 0 0 0    (-∞,∞)
+  SFVec3f    []       bboxCenter  0 0 0    (-∞,∞)
+  SFVec3f    []       bboxSize    -1 -1 -1 [0,∞) or -1 -1 -1
+  SFNode     []       collidable  NULL     [X3DNBodyCollidableNode]
+}
+
+CollidableShape : X3DNBodyCollidableNode  {
+  SFBool     [in,out] enabled     TRUE
+  SFNode     [in,out] metadata    NULL     [X3DMetadataObject]
+  SFRotation [in,out] rotation    0 0 1 0  [0,1]
+  SFVec3f    [in,out] translation 0 0 0    (-∞,∞)
+  SFVec3f    []       bboxCenter  0 0 0    (-∞,∞)
+  SFVec3f    []       bboxSize    -1 -1 -1 [0,∞) or -1 -1 -1
+  SFNode     []       shape       NULL     [Shape]
+}
+
+CollisionCollection : X3DChildNode {
+  MFString [in,out] appliedParameters        "BOUNCE"
+  SFFloat  [in,out] bounce                   0        [0,1]
+  MFNode   [in,out] collidables              NULL     [X3DNBodyCollisionSpaceNode,
+                                                       X3DNBodyCollidableNode]
+  SFBool   [in,out] enabled                  TRUE
+  SFVec2f  [in,out] frictionCoefficients     0 0      [0,∞)
+  SFNode   [in,out] metadata                 NULL     [X3DMetadataObject]
+  SFFloat  [in,out] minBounceSpeed           0.1      [0,∞)
+  SFVec2f  [in,out] slipFactors	             0 0      (-∞,∞)
+  SFFloat  [in,out] softnessConstantForceMix 0.0001   [0,1]
+  SFFloat  [in,out] softnessErrorCorrection  0.8      [0,1]
+  SFVec2f  [in,out] surfaceSpeed             0 0      (-∞,∞)
+}
+
+CollisionSensor : X3DSensorNode {
+  SFNode [in,out] collider      NULL [CollisionCollection]
+  SFBool [in,out] enabled       TRUE
+  SFNode [in,out] metadata      NULL [X3DMetadataObject]
+  MFNode [out]    intersections	     [X3DNBodyCollidableNode]
+  MFNode [out]    contacts           [Contact]
+  SFBool [out]    isActive
+}
+
+CollisionSpace : X3DNBodyCollisionSpaceNode {
+  MFNode  [in,out] collidables NULL     [X3DNBodyCollisionSpaceNode,
+                                         X3DNBodyCollidableNode]
+  SFBool  [in,out] enabled     TRUE
+  SFNode  [in,out] metadata    NULL     [X3DMetadataObject]
+  SFBool  [in,out] useGeometry FALSE
+  SFVec3f []       bboxCenter  0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize    -1 -1 -1 [0,∞) or -1 -1 -1
+}
+
+Contact : X3DNode {
+  MFString [in,out] appliedParameters        "BOUNCE"
+  SFNode   [in,out] body1                    NULL     [RigidBody]
+  SFNode   [in,out] body2                    NULL     [RigidBody]
+  SFFloat  [in,out] bounce                   0        [0,1]
+  SFVec3f  [in,out] contactNormal            0 1 0    (-∞,∞)
+  SFFloat  [in,out] depth                    0        (-∞,∞)
+  SFVec2f  [in,out] frictionCoefficients     0 0      [0,∞)
+  SFVec3f  [in,out] frictionDirection        0 1 0    (-∞,∞)
+  SFNode   [in,out] geometry1                NULL     [X3DNBodyCollidableNode]
+  SFNode   [in,out] geometry2                NULL     [X3DNBodyCollidableNode]
+  SFNode   [in,out] metadata                 NULL     [X3DMetadataObject]
+  SFFloat  [in,out] minbounceSpeed           0        [0,∞)
+  SFVec3f  [in,out] position                 0 0 0    (-∞,∞)
+  SFVec2f  [in,out] slipCoefficients         0 0      (-∞,∞)
+  SFFloat  [in,out] softnessConstantForceMix 0.0001   [0,1]
+  SFFloat  [in,out] softnessErrorCorrection  0.8      [0,1]
+  SFVec2f  [in,out] surfaceSpeed             0 0      (-∞,∞)
+}
+
+DoubleAxisHingeJoint : X3DRigidJointNode {
+  SFVec3f  [in,out] anchorPoint               0 0 0
+  SFVec3f  [in,out] axis1                     0 0 0
+  SFVec3f  [in,out] axis2                     0 0 0
+  SFNode   [in,out] body1                     NULL   [RigidBody]
+  SFNode   [in,out] body2                     NULL   [RigidBody]
+  SFFloat  [in,out] desiredAngularVelocity1   0      (-∞,∞)
+  SFFloat  [in,out] desiredAngularVelocity2   0      (-∞,∞)
+  MFString [in,out] forceOutput               "NONE" ["ALL","NONE",...]
+  SFFloat  [in,out] maxAngle1                 π      [-π,π]
+  SFFloat  [in,out] maxTorque1                0      (-∞,∞)
+  SFFloat  [in,out] maxTorque2                0      (-∞,∞)
+  SFNode   [in,out] metadata                  NULL   [X3DMetadataObject]
+  SFFloat  [in,out] minAngle1                 -π     [-π,π]
+  SFFloat  [in,out] stopBounce1               0      [0,1]
+  SFFloat  [in,out] stopConstantForceMix1     0.001  [0,∞)
+  SFFloat  [in,out] stopErrorCorrection1      0.8    [0,1]
+  SFFloat  [in,out] suspensionErrorCorrection 0.8    [0,1]
+  SFFloat  [in,out] suspensionForce           0      [0,∞)
+  SFVec3f  [out]    body1AnchorPoint
+  SFVec3f  [out]    body1Axis
+  SFVec3f  [out]    body2AnchorPoint
+  SFVec3f  [out]    body2Axis
+  SFFloat  [out]    hinge1Angle
+  SFFloat  [out]    hinge1AngleRate
+  SFFloat  [out]    hinge2Angle
+  SFFloat  [out]    hinge2AngleRate
+}
+
+MotorJoint : X3DRigidJointNode {
+  SFFloat  [in,out] axis1Angle           0      [-π,π]
+  SFFloat  [in,out] axis1Torque          0      (-∞,∞)
+  SFFloat  [in,out] axis2Angle           0      [-π,π]
+  SFFloat  [in,out] axis2Torque          0      (-∞,∞)
+  SFFloat  [in,out] axis3Angle           0      [-π,π]
+  SFFloat  [in,out] axis3Torque          0      (-∞,∞)
+  SFNode   [in,out] body1                NULL   [RigidBody]
+  SFNode   [in,out] body2                NULL   [RigidBody]
+  SFInt32  [in,out] enabledAxes          1	[0,3]
+  MFString [in,out] forceOutput          "NONE" ["ALL","NONE",...]
+  SFNode   [in,out] metadata             NULL   [X3DMetadataObject]
+  SFVec3f  [in,out] motor1Axis           0 0 0
+  SFVec3f  [in,out] motor2Axis           0 0 0
+  SFVec3f  [in,out] motor3Axis           0 0 0
+  SFFloat  [in,out] stop1Bounce          0      [0,1]
+  SFFloat  [in,out] stop1ErrorCorrection 0.8    [0,1]
+  SFFloat  [in,out] stop2Bounce          0      [0,1]
+  SFFloat  [in,out] stop2ErrorCorrection 0.8    [0,1]
+  SFFloat  [in,out] stop3Bounce          0      [0,1]
+  SFFloat  [in,out] stop3ErrorCorrection 0.8    [0,1]
+  SFFloat  [out]    motor1Angle
+  SFFloat  [out]    motor1AngleRate
+  SFFloat  [out]    motor2Angle
+  SFFloat  [out]    motor2AngleRate
+  SFFloat  [out]    motor3Angle
+  SFFloat  [out]    motor3AngleRate
+  SFBool   []       autoCalc             FALSE
+}
+
+RigidBody : X3DNode {
+  SFFloat    [in,out] angularDampingFactor 0.001   [0,1]
+  SFVec3f    [in,out] angularVelocity      0 0 0   (-∞,∞)
+  SFBool     [in,out] autoDamp             FALSE
+  SFBool     [in,out] autoDisable          FALSE
+  SFVec3f    [in,out] centerOfMass         0 0 0   (-∞,∞)
+  SFFloat    [in,out] disableAngularSpeed  0       [0,∞)
+  SFFloat    [in,out] disableLinearSpeed   0       [0,∞)
+  SFFloat    [in,out] disableTime          0       [0,∞)
+  SFBool     [in,out] enabled              TRUE
+  SFVec3f    [in,out] finiteRotationAxis   0 0 0   [-1,1]
+  SFBool     [in,out] fixed                FALSE
+  MFVec3f    [in,out] forces               []
+  MFNode     [in,out] geometry             []      [X3DNBodyCollidableNode]
+  SFMatrix3f [in,out] inertia	           1 0 0
+                                           0 1 0
+                                           0 0 1
+  SFFloat    [in,out] linearDampingFactor  0.001   [0,1]
+  SFVec3f    [in,out] linearVelocity       0 0 0   (-∞,∞)
+  SFFloat    [in,out] mass                 1       (0,∞)
+  SFNode     [in,out] massDensityModel     NULL    [Sphere, Box, Cone]
+  SFNode     [in,out] metadata             NULL    [X3DMetadataObject]
+  SFRotation [in,out] orientation          0 0 1 0 [0,1]
+  SFVec3f    [in,out] position             0 0 0   (-∞,∞)
+  MFVec3f    [in,out] torques              []
+  SFBool     [in,out] useFiniteRotation    FALSE
+  SFBool     [in,out] useGlobalGravity     TRUE
+}
+RigidBodyCollection : X3DChildNode {
+  MFNode  [in]     set_contacts                     [Contact] 
+  SFBool  [in,out] autoDisable             FALSE
+  MFNode  [in,out] bodies                  []       [RigidBody]
+  SFFloat [in,out] constantForceMix        0.0001   [0,∞)
+  SFFloat [in,out] contactSurfaceThickness 0        [0,∞)
+  SFFloat [in,out] disableAngularSpeed     0        [0,∞)
+  SFFloat [in,out] disableLinearSpeed      0        [0,∞)
+  SFFloat [in,out] disableTime             0        [0,∞)
+  SFBool  [in,out] enabled                 TRUE
+  SFFloat [in,out] errorCorrection         0.8      [0,1]
+  SFVec3f [in,out] gravity                 0 -9.8 0
+  SFInt32 [in,out] iterations              10	    [0,∞)
+  MFNode  [in,out] joints                  []       [X3DRigidJointNode]
+  SFFloat [in,out] maxCorrectionSpeed      -1       [0,∞) or -1
+  SFNode  [in,out] metadata                NULL     [X3DMetadataObject]
+  SFBool  [in,out] preferAccuracy          FALSE
+  SFNode  []       collider                NULL     [CollisionCollection]
+}
+SingleAxisHingeJoint : X3DRigidJointNode {
+  SFVec3f  [in,out] anchorPoint         0 0 0
+  SFVec3f  [in,out] axis                0 0 0
+  SFNode   [in,out] body1               NULL   [RigidBody]
+  SFNode   [in,out] body2               NULL   [RigidBody]
+  MFString [in,out] forceOutput         "NONE" ["ALL","NONE",...]
+  SFFloat  [in,out] maxAngle            π
+  SFNode   [in,out] metadata            NULL   [X3DMetadataObject]
+  SFFloat  [in,out] minAngle            -π
+  SFFloat  [in,out] stopBounce          0      [0,1]
+  SFFloat  [in,out] stopErrorCorrection 0.8    [0,1]
+  SFFloat  [out]    angle
+  SFFloat  [out]    angleRate
+  SFVec3f  [out]    body1AnchorPoint
+  SFVec3f  [out]    body2AnchorPoint
+}
+
+SliderJoint : X3DRigidJointNode {
+  SFVec3f  [in,out] axis                0 1 0
+  SFNode   [in,out] body1               NULL   [RigidBody]
+  SFNode   [in,out] body2               NULL   [RigidBody]
+  MFString [in,out] forceOutput         "NONE" ["ALL","NONE",...]
+  SFFloat  [in,out] maxSeparation       1      [0,∞)
+  SFNode   [in,out] metadata            NULL   [X3DMetadataObject]
+  SFFloat  [in,out] minSeparation       0      [0,∞)
+  SFFloat  [in,out] sliderForce         0      [-∞,∞)
+  SFFloat  [in,out] stopBounce          0      [0,1]
+  SFFloat  [in,out] stopErrorCorrection 1      [0,1]
+  SFFloat  [out]    separation
+  SFFloat  [out]    separationRate
+}
+
+UniversalJoint : X3DRigidJointNode {
+  SFVec3f  [in,out] anchorPoint          0 0 0
+  SFVec3f  [in,out] axis1                0 0 0
+  SFVec3f  [in,out] axis2                0 0 0
+  SFNode   [in,out] body1                NULL   [RigidBody]
+  SFNode   [in,out] body2                NULL   [RigidBody]
+  SFNode   [in,out] metadata             NULL   [X3DMetadataObject]
+  MFString [in,out] forceOutput          "NONE" ["ALL","NONE",...]
+  SFFloat  [in,out] stopBounce1          0      [0,1]
+  SFFloat  [in,out] stop1ErrorCorrection 0.8    [0,1]
+  SFFloat  [in,out] stop2Bounce          0      [0,1]
+  SFFloat  [in,out] stop2ErrorCorrection 0.8    [0,1]
+  SFVec3f  [out]    body1AnchorPoint
+  SFVec3f  [out]    body1Axis
+  SFVec3f  [out]    body2AnchorPoint
+  SFVec3f  [out]    body2Axis
+}
+
+LinePickSensor : X3DPickSensorNode {
+  SFBool   [in,out] enabled                 TRUE
+  SFNode   [in,out] metadata                NULL      [X3DMetadataObject]
+  MFString [in,out] objectType              "ALL"     ["ALL","NONE","TERRAIN",...]
+  SFNode   [in,out] pickingGeometry         NULL      [IndexedLineSet|LineSet]
+  MFNode   [in,out] pickTarget              []        [X3DGroupingNode|X3DShapeNode|Inline]
+  SFBool   [out]    isActive
+  MFNode   [out]    pickedGeometry
+  MFVec3f  [out]    pickedNormal
+  MFVec3f  [out]    pickedPoint
+  MFVec3f  [out]    pickedTextureCoordinate
+  SFString []       intersectionType        "BOUNDS"  ["GEOMETRY"|"BOUNDS"|...]
+  SFString []       sortOrder               "CLOSEST" ["ANY"|"CLOSEST"|"ALL"|"ALL_SORTED"]
+}
+
+PickableGroup : X3DGroupingNode, X3DPickableObject {
+  MFNode   [in]     addChildren
+  MFNode   [in]     removeChildren
+  MFNode   [in,out] children       []       [X3DChildNode]
+  SFNode   [in,out] metadata       NULL     [X3DMetadataObject]
+  MFString [in,out] objectType     "ALL"    ["ALL","NONE","TERRAIN",...]
+  SFBool   [in,out] pickable       TRUE
+  SFVec3f  []       bboxCenter     0 0 0    (-∞,∞)
+  SFVec3f  []       bboxSize       -1 -1 -1 [0,∞) or -1 -1 -1
+}
+PointPickSensor : X3DPickSensorNode {
+  SFBool   [in,out] enabled          TRUE
+  SFNode   [in,out] metadata         NULL      [X3DMetadataObject]
+  MFString [in,out] objectType       "ALL"     ["ALL","NONE","TERRAIN",...]
+  SFNode   [in,out] pickingGeometry  NULL      [PointSet]
+  MFNode   [in,out] pickTarget       []        [X3DGroupingNode|X3DShapeNode|Inline]
+  SFBool   [out]    isActive
+  MFNode   [out]    pickedGeometry
+  MFVec3f  [out]    pickedPoint
+  SFString []       intersectionType "BOUNDS"  ["GEOMETRY"|"BOUNDS"|...]
+  SFString []       sortOrder        "CLOSEST" ["CLOSEST"|"ALL"|"ALL_SORTED"]
+}
+PrimitivePickSensor : X3DPickSensorNode {
+  SFBool   [in,out] enabled          TRUE
+  SFNode   [in,out] metadata         NULL      [X3DMetadataObject]
+  MFString [in,out] objectType       "ALL"     ["ALL","NONE","TERRAIN",...]
+  SFNode   [in,out] pickingGeometry  NULL      [Cone|Cylinder|Sphere|Box]
+  MFNode   [in,out] pickTarget       []        [X3DGroupingNode|X3DShapeNode|Inline]
+  SFBool   [out]    isActive
+  MFNode   [out]    pickedGeometry
+  SFString []       intersectionType "BOUNDS"  ["GEOMETRY"|"BOUNDS"|...]
+  SFString []       sortOrder        "CLOSEST" ["ANY"|"CLOSEST"|"ALL"|"ALL_SORTED"]
+}
+VolumePickSensor : X3DPickSensorNode {
+  SFBool   [in,out] enabled          TRUE
+  SFNode   [in,out] metadata         NULL      [X3DMetadataObject]
+  MFString [in,out] objectType       "ALL"     ["ALL","NONE","TERRAIN",...]
+  SFNode   [in,out] pickingGeometry  NULL      [X3DGeometryNode]
+  MFNode   [in,out] pickTarget       []        [X3DGroupingNode|X3DShapeNode|Inline]
+  SFBool   [out]    isActive
+  MFNode   [out]    pickedGeometry
+  SFString []       intersectionType "BOUNDS"  ["GEOMETRY"|"BOUNDS"|...]
+  SFString []       sortOrder        "CLOSEST" ["ANY"|"CLOSEST"|"ALL"|"ALL_SORTED"]
+}
+
+ColorChaser: X3DChaserNode {
+  SFColor [in]     set_destination
+  SFColor [in]     set_value
+  SFNode  [in,out] metadata           NULL        [X3DMetadataObject]
+  SFBool  [out]    isActive
+  SFColor [out]    value_changed
+  SFTime  []       duration           1           [0,∞)
+  SFColor []       initialDestination 0.8 0.8 0.8 [0,1]
+  SFColor []       initialValue       0.8 0.8 0.8 [0,1]
+}
+
+ColorDamper : X3DDamperNode {
+  SFColor [in]     set_destination
+  SFColor [in]     set_value
+  SFNode  [in,out] metadata           NULL        [X3DMetadataObject]
+  SFTime  [in,out] tau                0.3         [0,∞)
+  SFFloat [in,out] tolerance          -1          -1 or [0,∞)
+  SFBool  [out]    isActive
+  SFColor [out]    value_changed
+  SFColor []       initialDestination 0.8 0.8 0.8 [0,1]
+  SFColor []       initialValue       0.8 0.8 0.8 [0,1]
+  SFInt32 []       order              3           [0..5]
+}
+
+CoordinateChaser: X3DChaserNode {
+  MFVec3f [in]     set_destination
+  MFVec3f [in]     set_value
+  SFNode  [in,out] metadata           NULL  [X3DMetadataObject]
+  SFBool  [out]    isActive
+  MFVec3f [out]    value_changed
+  SFTime  []       duration           1     [0,∞)
+  MFVec3f []       initialDestination 0 0 0
+  MFVec3f []       initialValue       0 0 0
+}
+
+CoordinateDamper : X3DDamperNode {
+  MFVec3f [in]     set_destination
+  MFVec3f [in]     set_value
+  SFNode  [in,out] metadata           NULL  [X3DMetadataObject]
+  SFTime  [in,out] tau                0.3   [0,∞)
+  SFFloat [in,out] tolerance          -1    -1 or [0,∞)
+  SFBool  [out]    isActive
+  MFVec3f [out]    value_changed
+  MFVec3f []       initialDestination 0 0 0
+  MFVec3f []       initialValue       0 0 0
+  SFInt32 []       order              3     [0..5]
+}
+
+OrientationChaser : X3DChaserNode {
+  SFRotation [in]     set_destination
+  SFRotation [in]     set_value
+  SFNode     [in,out] metadata           NULL    [X3DMetadataObject]
+  SFBool     [out]    isActive
+  SFRotation [out]    value_changed
+  SFTime     []       duration           1       [0,∞)
+  SFRotation []       initialDestination 0 1 0 0
+  SFRotation []       initialValue       0 1 0 0
+}
+OrientationDamper : X3DDamperNode {
+  SFRotation [in]     set_destination
+  SFRotation [in]     set_value
+  SFNode     [in,out] metadata           NULL    [X3DMetadataObject]
+  SFTime     [in,out] tau                0.3     [0,∞)
+  SFFloat    [in,out] tolerance          -1      -1 or [0..∞]
+  SFBool     [out]    isActive
+  SFRotation [out]    value_changed
+  SFRotation []       initialDestination 0 1 0 0
+  SFRotation []       initialValue       0 1 0 0
+  SFInt32    []       order              3       [0..5]
+}
+
+PositionChaser : X3DChaserNode {
+  SFVec3f [in]     set_destination
+  SFVec3f [in]     set_value
+  SFNode  [in,out] metadata           NULL  [X3DMetadataObject]
+  SFBool  [out]    isActive
+  SFVec3f [out]    value_changed
+  SFTime  []       duration           1     [0,∞)
+  SFVec3f []       initialDestination 0 0 0
+  SFVec3f []       initialValue       0 0 0
+}
+
+PositionChaser2D : X3DChaserNode {
+  SFVec2f [in]     set_destination
+  SFVec2f [in]     set_value
+  SFNode  [in,out] metadata           NULL  [X3DMetadataObject]
+  SFBool  [out]    isActive
+  SFVec2f [out]    value_changed
+  SFTime  []       duration           1     [0,∞)
+  SFVec2f []       initialDestination 0 0
+  SFVec2f []       initialValue       0 0
+}
+PositionDamper : X3DDamperNode {
+  SFVec3f [in]     set_destination
+  SFVec3f [in]     set_value
+  SFNode  [in,out] metadata           NULL  [X3DMetadataObject]
+  SFTime  [in,out] tau                0.3   [0,∞)
+  SFFloat [in,out] tolerance          -1    -1 or [0,∞)
+  SFBool  [out]    isActive
+  SFVec3f [out]    value_changed
+  SFVec3f []       initialDestination 0 0 0
+  SFVec3f []       initialValue       0 0 0
+  SFInt32 []       order              3     [0..5]
+}
+
+PositionDamper2D : X3DDamperNode {
+  SFVec2f [in]     set_destination
+  SFVec2f [in]     set_value
+  SFNode  [in,out] metadata           NULL [X3DMetadataObject]
+  SFTime  [in,out] tau                0.3  [0,∞)
+  SFFloat [in,out] tolerance          -1   -1 or [0..∞]
+  SFBool  [out]    isActive
+  SFVec2f [out]    value_changed
+  SFVec2f []       initialDestination 0 0
+  SFVec2f []       initialValue       0 0
+  SFInt32 []       order              3    [0..5]
+}
+ScalarChaser : X3DChaserNode {
+  SFFloat [in]     set_destination
+  SFFloat [in]     set_value
+  SFNode  [in,out] metadata           NULL [X3DMetadataObject]
+  SFBool  [out]    isActive
+  SFFloat [out]    value_changed
+  SFTime  []       duration           1    [0,∞)
+  SFFloat []       initialDestination 0
+  SFFloat []       initialValue       0
+}
+
+ScalarDamper: X3DDamperNode {
+  SFFloat [in]     set_destination
+  SFFloat [in]     set_value
+  SFNode  [in,out] metadata           NULL  [X3DMetadataObject]
+  SFTime  [in,out] tau                0.3   [0,∞)
+  SFFloat [in,out] tolerance          -1    -1 or [0,∞)
+  SFBool  [out]    isActive
+  SFFloat [out]    value_changed
+  SFFloat []       initialDestination 0
+  SFFloat []       initialValue       0
+  SFInt32 []       order              3     [0..5]
+}
+
+TexCoordChaser2D: X3DChaserNode {
+  MFVec2f [in]     set_destination
+  MFVec2f [in]     set_value
+  SFNode  [in,out] metadata           NULL [X3DMetadataObject]
+  SFBool  [out]    isActive
+  MFVec2f [out]    value_changed
+  SFTime  []       duration           1    [0,∞)
+  MFVec2f []       initialDestination []
+  MFVec2f []       initialValue       []
+}
+TexCoordDamper2D : X3DDamperNode {
+  MFVec2f [in]     set_destination
+  MFVec2f [in]     set_value
+  SFNode  [in,out] metadata           NULL [X3DMetadataObject]
+  SFTime  [in,out] tau                0.3  [0,∞)
+  SFFloat [in,out] tolerance          -1   -1 or [0..∞]
+  SFBool  [out]    isActive
+  MFVec2f [out]    value_changed
+  MFVec2f []       initialDestination []
+  MFVec2f []       initialValue       []
+  SFInt32 []       order              3    [0..5]
+}
+
+BoundedPhysicsModel : X3DParticlePhysicsModelNode { 
+  SFBool [in,out] enabled  TRUE
+  SFNode [in,out] geometry NULL [X3DGeometryNode]
+  SFNode [in,out] metadata NULL [X3DMetadataObject]
+}
+
+ConeEmitter : X3DParticleEmitterNode { 
+  SFFloat [in,out] angle       π/4   [0,π]
+  SFVec3f [in,out] direction   0 1 0 
+  SFNode  [in,out] metadata    NULL  [X3DMetadataObject]
+  SFVec3f [in,out] position    0 0 0
+  SFFloat [in,out] speed       0     [0,∞)
+  SFFloat [in,out] variation   0.25  [0,∞)
+  SFFloat []       mass        0     [0,∞)
+  SFFloat []       surfaceArea 0     [0,∞)
+}
+ExplosionEmitter : X3DParticleEmitterNode { 
+  SFNode  [in,out] metadata    NULL  [X3DMetadataObject]
+  SFVec3f [in,out] position    0 0 0
+  SFFloat [in,out] speed       0     [0,∞)
+  SFFloat [in,out] variation   0.25  [0,∞)
+  SFFloat []       mass        0     [0,∞)
+  SFFloat []       surfaceArea 0     [0,∞)
+}
+ForcePhysicsModel : X3DParticlePhysicsModelNode { 
+  SFBool  [in,out] enabled  TRUE
+  SFVec3f [in,out] force    0 -9.8 0 (∞,∞)
+  SFNode  [in,out] metadata NULL     [X3DMetadataObject]
+}
+ParticleSystem : X3DShapeNode { 
+  SFNode   [in,out] appearance        NULL      [X3DAppearanceNode]
+  SFBool   [in,out] createParticles   TRUE
+  SFNode   [in,out] geometry          NULL      [X3DGeometryNode]
+  SFBool   [in,out] enabled           TRUE
+  SFFloat  [in,out] lifetimeVariation 0.25      [0,1]
+  SFInt32  [in,out] maxParticles      200       [0,∞)
+  SFNode   [in,out] metadata          NULL      [X3DMetadataObject]
+  SFFloat  [in,out] particleLifetime  5         [0,∞)
+  SFVec2f  [in,out] particleSize      0.02 0.02 [0,∞)
+  SFBool   [out]    isActive
+  SFVec3f  []       bboxCenter        0 0 0
+  SFVec3f  []       bboxSize          -1 -1 -1  (0,∞) or -1 -1 -1
+  SFNode   []       colorRamp         NULL      [X3DColorNode]
+  MFFloat  []       colorKey          []        [0,∞)
+  SFNode   []       emitter           NULL      [X3DParticleEmitterNode]
+  SFString []       geometryType      "QUAD"    ["LINE"|"POINT"|"QUAD"|"SPRITE"|"TRIANGLE"|"GEOMETRY"|...]
+  MFNode   []       physics           []        [X3DParticlePhysicsModelNode]
+  SFNode   []       texCoordRamp      NULL      [TextureCoordinate]
+  MFFloat  []       texCoordKey       []        [0,∞)
+}
+
+PointEmitter : X3DParticleEmitterNode { 
+  SFVec3f [in,out] direction   0 1 0
+  SFNode  [in,out] metadata    NULL  [X3DMetadataObject]
+  SFVec3f [in,out] position    0 0 0
+  SFFloat [in,out] speed       0     [0,∞)
+  SFFloat [in,out] variation   0.25  [0,∞)
+  SFFloat []       mass        0     [0,∞)
+  SFFloat []       surfaceArea 0     [0,∞)
+}
+PolylineEmitter : X3DParticleEmitterNode { 
+  MFInt32 [in]     set_coordIndex
+  SFNode  [in,out] coord          NULL  [X3DCoordinateNode]
+  SFVec3f [in,out] direction      0 1 0 [-1,1]
+  SFNode  [in,out] metadata       NULL  [X3DMetadataObject]
+  SFFloat [in,out] speed          0     [0,∞)
+  SFFloat [in,out] variation      0.25  [0,∞)
+  MFInt32 []       coordIndex     -1    [0,∞) or -1
+  SFFloat []       mass           0     [0,∞)
+  SFFloat []       surfaceArea    0     [0,∞)
+}
+SurfaceEmitter : X3DParticleEmitterNode { 
+  MFInt32 [in]     set_coordIndex
+  SFNode  [in,out] metadata       NULL  [X3DMetadataObject]
+  SFFloat [in,out] speed          0     [0,∞)
+  SFFloat [in,out] variation      0.25  [0,∞)
+  MFInt32 []       coordIndex     -1    [0,∞) or -1
+  SFFloat []       mass           0     [0,∞)
+  SFNode  []       surface        NULL  [X3DGeometryNode]
+  SFFloat []       surfaceArea    0     [0,∞)
+}
+
+VolumeEmitter : X3DParticleEmitterNode { 
+  MFInt32 [in]     set_coordIndex
+  SFNode  [in,out] coord          NULL  [X3DCoordinateNode]
+  SFVec3f [in,out] direction      0 1 0 [-1,1]
+  SFNode  [in,out] metadata       NULL  [X3DMetadataObject]
+  SFFloat [in,out] speed          0     [0,∞)
+  SFFloat [in,out] variation      0.25  [0,∞)
+  MFInt32 []       coordIndex     -1    [0,∞) or -1
+  SFBool  []       internal       TRUE
+  SFFloat []       mass           0     [0,∞)
+  SFFloat []       surfaceArea    0     [0,∞)
+}
+
+WindPhysicsModel : X3DParticlePhysicsModelNode { 
+  SFVec3f [in,out] direction  0 0 0 (∞,∞)
+  SFBool  [in,out] enabled    TRUE
+  SFFloat [in,out] gustiness  0.1   [0,∞)
+  SFNode  [in,out] metadata   NULL  [X3DMetadataObject]
+  SFFloat [in,out] speed      0.1   [0,∞)
+  SFFloat [in,out] turbulence 0     [0,1]
+}
+
+BlendedVolumeStyle : X3DComposableVolumeRenderStyleNode { 
+  SFBool   [in,out] enabled                 TRUE
+  SFNode   [in,out] metadata                NULL       [X3DMetadataObject]
+  SFNode   [in,out] renderStyle             NULL       [X3DComposableVolumeRenderStyleNode]
+  SFNode   [in,out] voxels                  NULL       [X3DTexture3DNode]         
+  SFFloat  [in,out] weightConstant1         0.5        [0,1]
+  SFFloat  [in,out] weightConstant2         0.5        [0,1]
+  SFString [in,out] weightFunction1         "CONSTANT" ["CONSTANT", "ALPHA0", "ALPHA1", "TABLE",
+                                                        "ONE_MINUS_ALPHA0", "ONE_MINUS_ALPHA1" ] 
+  SFString [in,out] weightFunction2         "CONSTANT" ["CONSTANT", "ALPHA0", "ALPHA1", "TABLE",
+                                                        "ONE_MINUS_ALPHA0", "ONE_MINUS_ALPHA1" ] 
+  SFNode   [in,out] weightTransferFunction1 NULL       [X3DTexture2DNode]
+  SFNode   [in,out] weightTransferFunction2 NULL       [X3DTexture2DNode]
+}
+BoundaryEnhancementVolumeStyle : X3DComposableVolumeRenderStyleNode { 
+  SFFloat     [in,out] boundaryOpacity  0.9     [0,1]
+  SFBool      [in,out] enabled          TRUE
+  SFNode      [in,out] metadata         NULL    [X3DMetadataObject]
+  SFFloat     [in,out] opacityFactor    2       [0,∞)
+  SFFloat     [in,out] retainedOpacity  0.2     [0,1]
+}
+CartoonVolumeStyle : X3DComposableVolumeRenderStyleNode { 
+  SFInt32     [in,out] colorSteps       4       [1,64]
+  SFBool      [in,out] enabled          TRUE
+  SFNode      [in,out] metadata         NULL    [X3DMetadataObject]
+  SFColorRGBA [in,out] orthogonalColor  1 1 1 1 [0,1]
+  SFColorRGBA [in,out] parallelColor    0 0 0 1 [0,1]
+  SFNode      [in,out] surfaceNormals   NULL    [X3DTexture3DNode]
+}
+ComposedVolumeStyle : X3DComposableVolumeRenderStyleNode { 
+  SFBool [in,out] enabled     TRUE
+  SFNode [in,out] metadata    NULL  [X3DMetadataObject]
+  MFNode [in,out] renderStyle []    [X3DComposableVolumeRenderStyleNode]
+}
+EdgeEnhancementVolumeStyle : X3DComposableVolumeRenderStyleNode { 
+  SFColorRGBA [in,out] edgeColor         0 0 0 1 [0,1]
+  SFBool      [in,out] enabled           TRUE
+  SFFloat     [in,out] gradientThreshold 0.4     [0,π]
+  SFNode      [in,out] metadata          NULL    [X3DMetadataObject]
+  SFNode      [in,out] surfaceNormals    NULL    [X3DTexture3DNode]
+}
+IsoSurfaceVolumeData : X3DVolumeDataNode {
+  SFFloat [in,out] contourStepSize  0        (-∞,∞)
+  SFVec3f [in,out] dimensions       1 1 1    (0,∞)
+  SFNode  [in,out] gradients        NULL     [X3DTexture3DNode]
+  SFNode  [in,out] metadata         NULL     [X3DMetadataObject]
+  MFNode  [in,out] renderStyle      []       [X3DVolumeRenderStyleNode]
+  SFFloat [in,out] surfaceTolerance 0        [0,∞)
+  MFFloat [in,out] surfaceValues    []       (-∞,∞)
+  SFNode  [in,out] voxels           NULL     [X3DTexture3DNode]
+  SFVec3f []       bboxCenter       0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize         -1 -1 -1 [0,∞) or -1 -1 -1
+}
+OpacityMapVolumeStyle : X3DComposableVolumeRenderStyleNode { 
+  SFBool [in,out] enabled          TRUE
+  SFNode [in,out] metadata         NULL [X3DMetadataObject]
+  SFNode [in,out] transferFunction NULL [X3DTexture2DNode,X3DTexture3DNode]
+}
+ProjectionVolumeStyle : X3DVolumeRenderStyleNode {
+  SFBool   [in,out] enabled            TRUE
+  SFNode   [in,out] metadata           NULL  [X3DMetadataObject]
+  SFFloat  [in,out] intensityThreshold 0     [0,1]
+  SFString [in,put] type               "MAX" ["MAX", "MIN", "AVERAGE"]
+}
+SegmentedVolumeData : X3DVolumeDataNode { 
+  SFVec3f [in,out] dimensions         1 1 1    (0,∞)
+  SFNode  [in,out] metadata           NULL     [X3DMetadataObject]
+  MFNode  [in,out] renderStyle        []       [X3DVolumeRenderStyleNode]
+  MFBool  [in,out] segmentEnabled     []
+  SFNode  [in,out] segmentIdentifiers NULL     [X3DTexture3DNode]
+  SFNode  [in,out] voxels             NULL     [X3DTexture3DNode]
+  SFVec3f []       bboxCenter         0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize           -1 -1 -1 [0,∞) or -1 -1 -1
+}
+ShadedVolumeStyle : X3DComposableVolumeRenderStyleNode {
+  SFBool   [in,out] enabled        TRUE
+  SFBool   [in,out] lighting       FALSE
+  SFNode   [in,out] material       NULL                [X3DMaterialNode]
+  SFNode   [in,out] metadata       NULL                [X3DMetadataObject]
+  SFBool   [in,out] shadows        FALSE
+  SFNode   [in,out] surfaceNormals NULL                [X3DTexture3DNode]
+  SFString []       phaseFunction  "Henyey-Greenstein" ["Henyey-Greenstein","NONE",...]
+}
+SilhouetteEnhancementVolumeStyle : X3DComposableVolumeRenderStyleNode { 
+  SFBool  [in,out] enabled                   TRUE
+  SFNode  [in,out] metadata                  NULL [X3DMetadataObject]
+  SFFloat [in,out] silhouetteBoundaryOpacity 0    [0,1]
+  SFFloat [in,out] silhouetteRetainedOpacity 1    [0,1]
+  SFFloat [in,out] silhouetteSharpness       0.5  [0,∞)
+  SFNode  [in,out] surfaceNormals            NULL [X3DTexture3DNode]
+}
+ToneMappedVolumeStyle : X3DComposableVolumeRenderStyleNode { 
+  SFColorRGBA [in,out] coolColor      0 0 1 0 [0,1]
+  SFBool      [in,out] enabled        TRUE
+  SFNode      [in,out] metadata       NULL    [X3DMetadataObject]
+  SFNode      [in,out] surfaceNormals NULL    [X3DTexture3DNode]
+  SFColorRGBA [in,out] warmColor      1 1 0 0 [0,1]
+}
+VolumeData : X3DVolumeDataNode { 
+  SFVec3f [in,out] dimensions      1 1 1    (0,∞)
+  SFNode  [in,out] metadata        NULL     [X3DMetadataObject]
+  SFNode  [in,out] renderStyle     NULL     [X3DVolumeRenderStyleNode]
+  SFNode  [in,out] voxels          NULL     [X3DTexture3DNode]
+  SFVec3f []       bboxCenter      0 0 0    (-∞,∞)
+  SFVec3f []       bboxSize        -1 -1 -1 [0,∞) or -1 -1 -1
+}
+Arc2D : X3DGeometryNode { 
+  SFNode  [in,out] metadata   NULL  [X3DMetadataObject]
+  SFFloat []       endAngle   π/2   [-2π,2π]
+  SFFloat []       radius     1     (0,∞)
+  SFFloat []       startAngle 0     [-2π,2π]
+}
+ArcClose2D : X3DGeometryNode { 
+  SFNode   [in,out] metadata    NULL  [X3DMetadataObject]
+  SFString []       closureType "PIE" ["PIE"|"CHORD"]
+  SFFloat  []       endAngle    π/2   [-2π,2π]
+  SFFloat  []       radius      1     (0,∞)
+  SFBool   []       solid       FALSE
+  SFFloat  []       startAngle  0     [-2π,2π]
+}
+Circle2D : X3DGeometryNode { 
+  SFNode  [in,out] metadata NULL  [X3DMetadataObject]
+  SFFloat []       radius   1     (0,∞)
+}
+Disk2D : X3DGeometryNode { 
+ SFNode  [in,out] metadata    NULL  [X3DMetadataObject]
+ SFFloat []       innerRadius 0     [0,∞)
+ SFFloat []       outerRadius 1     (0,∞)
+ SFBool  []       solid       FALSE
+}
+Polyline2D : X3DGeometryNode { 
+  SFNode  [in,out] metadata     NULL  [X3DMetadataObject]
+  MFVec2f []       lineSegments []    (-∞,∞)
+}
+Polypoint2D : X3DGeometryNode { 
+  SFNode  [in,out] metadata NULL [X3DMetadataObject]
+  MFVec2f [in,out] point    []    (-∞,∞)
+}
+Rectangle2D : X3DGeometryNode { 
+  SFNode  [in,out] metadata NULL  [X3DMetadataObject]
+  SFVec2f []       size     2 2   (0,∞)
+  SFBool  []       solid    FALSE
+}
+TriangleSet2D : X3DGeometryNode { 
+  SFNode  [in,out] metadata NULL  [X3DMetadataObject]
+  MFVec2f [in,out] vertices []    (-∞,∞)
+  SFBool  []       solid    FALSE
+}
