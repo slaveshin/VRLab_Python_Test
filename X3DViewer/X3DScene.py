@@ -42,9 +42,11 @@ class X3DScene:
         elif element == "Box":
             self.ElementBoxNode(current_, p_head_)
         elif element == "Cylinder":
-            self.ElementCylinderNode(current_, p_head_)  
+            self.ElementCylinderNode(current_, p_head_)
         elif element == "Cone":
-            self.ElementConeNode(current_, p_head_)    
+            self.ElementConeNode(current_, p_head_)
+        elif element == "Sphere":
+            self.ElementSphereNode(current_, p_head_)
         elif element == "head":
             self.ElementHeadNode(current_, p_head_)
         elif element == "meta":
@@ -56,7 +58,7 @@ class X3DScene:
         elif element == "Background":
             self.ElementBackgroundNode(current_, p_head_)
         elif element == "Transform":
-            self.ElementTransformNode(current_, p_head_)     
+            self.ElementTransformNode(current_, p_head_)
         elif element == "Viewpoint":
             self.ElementViewpointNode(current_, p_head_)
         elif element == "Shape":
@@ -67,27 +69,35 @@ class X3DScene:
     def ElementAppearanceNode(self, current_, p_head_):
         currentNode = x3d.Appearance()
         Node(current_.tag, parent=p_head_, data=currentNode)
+
     def ElementHeadNode(self, current_, p_head_):
         currentNode = x3d.Head()
         Node(current_.tag, parent=p_head_, data=currentNode)
+
     def ElementMetaNode(self, current_, p_head_):
         currentNode = x3d.Meta()
         Node(current_.tag, parent=p_head_, data=currentNode)
+
     def ElementSceneNode(self, current_, p_head_):
         currentNode = x3d.Scene()
         Node(current_.tag, parent=p_head_, data=currentNode)
+
     def ElementWorldInfoNode(self, current_, p_head_):
         currentNode = x3d.WorldInfo()
         Node(current_.tag, parent=p_head_, data=currentNode)
+
     def ElementMaterialNode(self, current_, p_head_):
         currentNode = x3d.Material()
         Node(current_.tag, parent=p_head_, data=currentNode)
+
     def ElementBackgroundNode(self, current_, p_head_):
         currentNode = x3d.Background()
         Node(current_.tag, parent=p_head_, data=currentNode)
+
     def ElementViewpointNode(self, current_, p_head_):
         currentNode = x3d.Viewpoint()
         Node(current_.tag, parent=p_head_, data=currentNode)
+
     def ElementShapeNode(self, current_, p_head_):
         currentNode = x3d.Shape()
         Node(current_.tag, parent=p_head_, data=currentNode)
@@ -176,7 +186,26 @@ class X3DScene:
             elif key == "USE":
                 currentNode.USE = node[key]
 
-        Node(current_.tag, parent=p_head_, data=currentNode)   
+        Node(current_.tag, parent=p_head_, data=currentNode)
+
+    def ElementSphereNode(self, current_, p_head_):
+        currentNode = x3d.Sphere()
+
+        node = current_.attrib
+        for key in node.keys():
+            if key == "solid":
+                if node[key] == "true":
+                    currentNode.solid = True
+                else:
+                    currentNode.solid = False
+            elif key == "radius":
+                currentNode.radius = float(node[key])
+            elif key == "DEF":
+                currentNode.DEF = node[key]
+            elif key == "USE":
+                currentNode.USE = node[key]
+
+        Node(current_.tag, parent=p_head_, data=currentNode)
 
     def ElementTransformNode(self, current_, p_head_):
         currentNode = x3d.Transform()
@@ -204,7 +233,7 @@ class X3DScene:
             elif key == "USE":
                 currentNode.USE = node[key]
 
-        Node(current_.tag, parent=p_head_, data=currentNode)            
+        Node(current_.tag, parent=p_head_, data=currentNode)
 
     def Draw(self):
         pNode = X3DScene.treeNode
@@ -227,7 +256,6 @@ class X3DScene:
             # TODO Viewpoint 구현
             glPushMatrix()
         #print(pNode, pNode.__dict__)
-
 
         if pNode.name == "Box":
             point = pNode.data.size
@@ -297,67 +325,93 @@ class X3DScene:
 
             glEnd()
 
-
         elif pNode.name == "Cylinder":
-                # 참고자료 https://gist.github.com/nikAizuddin/5ea402e9073f1ef76ba6
-                radius = pNode.data.radius
-                height = pNode.data.height
+            # 참고자료 https://gist.github.com/nikAizuddin/5ea402e9073f1ef76ba6
+            radius = pNode.data.radius
+            height = pNode.data.height
 
-                x = 0.0
-                y = 0.0
-                angle = 0.0
-                angle_stepsize = 0.1
+            x = 0.0
+            y = 0.0
+            angle = 0.0
+            angle_stepsize = 0.1
 
-                # Draw the tube
+            # Draw the tube
+            glBegin(GL_QUAD_STRIP)
+            angle = 0.0
+            while(angle < 2*math.pi):
+                x = radius * math.cos(angle)
+                y = radius * math.sin(angle)
+                glVertex3f(x, y, height)
+                glVertex3f(x, y, 0.0)
+                angle = angle + angle_stepsize
+
+            glVertex3f(radius, 0.0, height)
+            glVertex3f(radius, 0.0, 0.0)
+            glEnd()
+
+            # Draw the circle on top of cylinder
+
+            glBegin(GL_POLYGON)
+            angle = 0.0
+            while(angle < 2*math.pi):
+                x = radius * math.cos(angle)
+                y = radius * math.sin(angle)
+                glVertex3f(x, y, height)
+                angle = angle + angle_stepsize
+
+            glVertex3f(radius, 0.0, height)
+            glEnd()
+
+        elif pNode.name == "Sphere":
+
+            lats = 30
+            longs = 30
+            r = pNode.data.radius
+
+            for i in range(lats):
+                lat0 = math.pi * (-0.5 + i / lats)
+                z0 = math.sin(lat0)
+                zr0 = math.cos(lat0)
+
+                lat1 = math.pi * (-0.5 + (i+1) / lats)
+                z1 = math.sin(lat1)
+                zr1 = math.cos(lat1)
+
                 glBegin(GL_QUAD_STRIP)
-                angle = 0.0
-                while(angle < 2*math.pi):
-                    x = radius * math.cos(angle)
-                    y = radius * math.sin(angle)
-                    glVertex3f(x, y, height)
-                    glVertex3f(x, y, 0.0)
-                    angle = angle + angle_stepsize
-
-                glVertex3f(radius, 0.0, height)
-                glVertex3f(radius, 0.0, 0.0)
+                for j in range(longs+1):
+                    lng = 2 * math.pi * (j+1) / longs
+                    x = math.cos(lng)
+                    y = math.sin(lng)
+                    glVertex(r * x * zr0, r * y * zr0, r * z0)
+                    glVertex(r * x * zr1, r * y * zr1, r * z1)
                 glEnd()
-
-
-                 # Draw the circle on top of cylinder
-
-                glBegin(GL_POLYGON)
-                angle = 0.0
-                while(angle < 2*math.pi):
-                    x = radius * math.cos(angle)
-                    y = radius * math.sin(angle)
-                    glVertex3f(x, y, height)
-                    angle = angle + angle_stepsize
-
-                glVertex3f(radius, 0.0, height)
-                glEnd()  
 
         elif pNode.name == "Cone":
-                # 참고자료 https://gist.github.com/davidwparker/1195852
-                cone_height = pNode.data.height
-                cone_radius = pNode.data.bottomRadius
+            # 참고자료 https://gist.github.com/davidwparker/1195852
+            cone_height = pNode.data.height
+            cone_radius = pNode.data.bottomRadius
 
-                # /* sides */
-                glBegin(GL_TRIANGLES)
-                for k in range(0, 360, 5):
-                    glVertex3f(0, 0, cone_height)
-                    glVertex3f(cone_radius*math.cos(k),cone_radius*math.sin(k), cone_height)
-                    glVertex3f(cone_radius*math.cos(k+5),cone_radius*math.sin(k+5), cone_height)
-                glEnd()
-                # /* bottom circle */
-                # /* rotate back */
+            # /* sides */
+            glBegin(GL_TRIANGLES)
+            for k in range(0, 360, 5):
+                glVertex3f(0, 0, cone_height)
+                glVertex3f(cone_radius*math.cos(k),
+                           cone_radius*math.sin(k), cone_height)
+                glVertex3f(cone_radius*math.cos(k+5),
+                           cone_radius*math.sin(k+5), cone_height)
+            glEnd()
+            # /* bottom circle */
+            # /* rotate back */
 
-                glRotated(90, 1, 0, 0)
-                glBegin(GL_TRIANGLES)
-                for k in range(0, 360, 3):
-                    glVertex3f(0, 0, 0)
-                    glVertex3f(cone_radius*math.cos(k),cone_height, cone_radius*math.sin(k))
-                    glVertex3f(cone_radius*math.cos(k+5),cone_height, cone_radius*math.sin(k+5))
-                glEnd()  
+            glRotated(90, 1, 0, 0)
+            glBegin(GL_TRIANGLES)
+            for k in range(0, 360, 3):
+                glVertex3f(0, 0, 0)
+                glVertex3f(cone_radius*math.cos(k),
+                           cone_height, cone_radius*math.sin(k))
+                glVertex3f(cone_radius*math.cos(k+5),
+                           cone_height, cone_radius*math.sin(k+5))
+            glEnd()
 
         for child in pNode.children:
             self.DrawOpenGL(child)
