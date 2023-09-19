@@ -42,7 +42,9 @@ class X3DScene:
         elif element == "Box":
             self.ElementBoxNode(current_, p_head_)
         elif element == "Cylinder":
-            self.ElementCylinderNode(current_, p_head_)     
+            self.ElementCylinderNode(current_, p_head_)  
+        elif element == "Cone":
+            self.ElementConeNode(current_, p_head_)    
         elif element == "head":
             self.ElementHeadNode(current_, p_head_)
         elif element == "meta":
@@ -106,6 +108,37 @@ class X3DScene:
                 currentNode.DEF = node[key]
             elif key == "USE":
                 currentNode.USE = node[key]
+
+        Node(current_.tag, parent=p_head_, data=currentNode)
+
+    def ElementConeNode(self, current_, p_head_):
+        currentNode = x3d.Cone()
+
+        node = current_.attrib
+        for key in node.keys():
+            if key == "solid":
+                if node[key] == "true":
+                    currentNode.solid = True
+                else:
+                    currentNode.solid = False
+            if key == "bottom":
+                if node[key] == "true":
+                    currentNode.bottom = True
+                else:
+                    currentNode.bottom = False
+            if key == "side":
+                if node[key] == "true":
+                    currentNode.side = True
+                else:
+                    currentNode.side = False
+            elif key == "height":
+                currentNode.height = float(node[key])
+            elif key == "DEF":
+                currentNode.DEF = node[key]
+            elif key == "USE":
+                currentNode.USE = node[key]
+            elif key == "bottomRadius":
+                currentNode.bottomRadius = float(node[key])
 
         Node(current_.tag, parent=p_head_, data=currentNode)
 
@@ -301,7 +334,30 @@ class X3DScene:
                     angle = angle + angle_stepsize
 
                 glVertex3f(radius, 0.0, height)
-                glEnd()    
+                glEnd()  
+
+        elif pNode.name == "Cone":
+                # 참고자료 https://gist.github.com/davidwparker/1195852
+                cone_height = pNode.data.height
+                cone_radius = pNode.data.bottomRadius
+
+                # /* sides */
+                glBegin(GL_TRIANGLES)
+                for k in range(0, 360, 5):
+                    glVertex3f(0, 0, cone_height)
+                    glVertex3f(cone_radius*math.cos(k),cone_radius*math.sin(k), cone_height)
+                    glVertex3f(cone_radius*math.cos(k+5),cone_radius*math.sin(k+5), cone_height)
+                glEnd()
+                # /* bottom circle */
+                # /* rotate back */
+
+                glRotated(90, 1, 0, 0)
+                glBegin(GL_TRIANGLES)
+                for k in range(0, 360, 3):
+                    glVertex3f(0, 0, 0)
+                    glVertex3f(cone_radius*math.cos(k),cone_height, cone_radius*math.sin(k))
+                    glVertex3f(cone_radius*math.cos(k+5),cone_height, cone_radius*math.sin(k+5))
+                glEnd()  
 
         for child in pNode.children:
             self.DrawOpenGL(child)
