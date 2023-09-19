@@ -1,9 +1,14 @@
 from anytree import Node, RenderTree
+from collections import deque
+from PythonSAI.common import X3D_CONSTANT
 import PythonSAI.x3d as x3d
 import xml.etree.ElementTree as ET
 from OpenGL.GL import *
 from OpenGL.GLU import *
 from OpenGL.GLUT import *
+import math
+import numpy as np
+
 
 class X3DScene:
 
@@ -36,6 +41,8 @@ class X3DScene:
             self.ElementAppearanceNode(current_, p_head_)
         elif element == "Box":
             self.ElementBoxNode(current_, p_head_)
+        elif element == "Cylinder":
+            self.ElementCylinderNode(current_, p_head_)     
         elif element == "head":
             self.ElementHeadNode(current_, p_head_)
         elif element == "meta":
@@ -46,6 +53,8 @@ class X3DScene:
             self.ElementWorldInfoNode(current_, p_head_)
         elif element == "Background":
             self.ElementBackgroundNode(current_, p_head_)
+        elif element == "Transform":
+            self.ElementTransformNode(current_, p_head_)     
         elif element == "Viewpoint":
             self.ElementViewpointNode(current_, p_head_)
         elif element == "Shape":
@@ -100,12 +109,93 @@ class X3DScene:
 
         Node(current_.tag, parent=p_head_, data=currentNode)
 
+    def ElementCylinderNode(self, current_, p_head_):
+        currentNode = x3d.Cylinder()
+
+        node = current_.attrib
+        for key in node.keys():
+            if key == "solid":
+                if node[key] == "true":
+                    currentNode.solid = True
+                else:
+                    currentNode.solid = False
+            if key == "side":
+                if node[key] == "true":
+                    currentNode.side = True
+                else:
+                    currentNode.side = False
+            if key == "top":
+                if node[key] == "true":
+                    currentNode.top = True
+                else:
+                    currentNode.top = False
+            if key == "bottom":
+                if node[key] == "true":
+                    currentNode.bottom = True
+                else:
+                    currentNode.bottom = False
+            elif key == "radius":
+                currentNode.radius = float(node[key])
+            elif key == "height":
+                currentNode.height = float(node[key])
+            elif key == "DEF":
+                currentNode.DEF = node[key]
+            elif key == "USE":
+                currentNode.USE = node[key]
+
+        Node(current_.tag, parent=p_head_, data=currentNode)   
+
+    def ElementTransformNode(self, current_, p_head_):
+        currentNode = x3d.Transform()
+        node = current_.attrib
+        for key in node.keys():
+            if key == "center":
+                currentNode.center = list(map(float, node[key].split()))
+            elif key == "children":
+                currentNode.children = list(node[key])
+            elif key == "rotation":
+                currentNode.rotation = list(map(float, node[key].split()))
+            elif key == "scale":
+                currentNode.scale = list(map(float, node[key].split()))
+            elif key == "scaleOrientation":
+                currentNode.scaleOrientation = list(
+                    map(float, node[key].split()))
+            elif key == "translation":
+                currentNode.translation = list(map(float, node[key].split()))
+            elif key == "bboxCenter":
+                currentNode.bboxCenter = list(map(float, node[key].split()))
+            elif key == "bboxSize":
+                currentNode.bboxSize = list(map(float, node[key].split()))
+            elif key == "DEF":
+                currentNode.DEF = node[key]
+            elif key == "USE":
+                currentNode.USE = node[key]
+
+        Node(current_.tag, parent=p_head_, data=currentNode)            
+
     def Draw(self):
         pNode = X3DScene.treeNode
         self.DrawOpenGL(pNode)
 
     def DrawOpenGL(self, pNode):
+
+        if pNode.name == "Transform":
+            glPushMatrix()
+            translation = pNode.data.translation
+            scale = pNode.data.scale
+            rotation = pNode.data.rotation
+
+            glTranslatef(translation[0], translation[1], translation[2])
+            glScalef(scale[0], scale[1], scale[2])
+            glRotatef(rotation[3] / X3D_CONSTANT["PI"] *
+                      180.0, rotation[0], rotation[1], rotation[2])
+
+        elif pNode.name == "Viewpoint":
+            # TODO Viewpoint 구현
+            glPushMatrix()
         #print(pNode, pNode.__dict__)
+
+
         if pNode.name == "Box":
             point = pNode.data.size
             point1 = [point[0] / 2.0, point[1] / 2.0, point[2] / -2.0]
@@ -174,5 +264,47 @@ class X3DScene:
 
             glEnd()
 
+
+        elif pNode.name == "Cylinder":
+                # 참고자료 https://gist.github.com/nikAizuddin/5ea402e9073f1ef76ba6
+                radius = pNode.data.radius
+                height = pNode.data.height
+
+                x = 0.0
+                y = 0.0
+                angle = 0.0
+                angle_stepsize = 0.1
+
+                # Draw the tube
+                glBegin(GL_QUAD_STRIP)
+                angle = 0.0
+                while(angle < 2*math.pi):
+                    x = radius * math.cos(angle)
+                    y = radius * math.sin(angle)
+                    glVertex3f(x, y, height)
+                    glVertex3f(x, y, 0.0)
+                    angle = angle + angle_stepsize
+
+                glVertex3f(radius, 0.0, height)
+                glVertex3f(radius, 0.0, 0.0)
+                glEnd()
+
+
+                 # Draw the circle on top of cylinder
+
+                glBegin(GL_POLYGON)
+                angle = 0.0
+                while(angle < 2*math.pi):
+                    x = radius * math.cos(angle)
+                    y = radius * math.sin(angle)
+                    glVertex3f(x, y, height)
+                    angle = angle + angle_stepsize
+
+                glVertex3f(radius, 0.0, height)
+                glEnd()    
+
         for child in pNode.children:
             self.DrawOpenGL(child)
+
+        if pNode.name in ["Transform", "Viewpoint"]:
+            glPopMatrix()
